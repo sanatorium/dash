@@ -2,7 +2,7 @@
 
 #include "cachemultimap.h"
 
-#include "test/test_dash.h"
+#include "test/test_sanity.h"
 
 #include <algorithm>
 #include <iostream>

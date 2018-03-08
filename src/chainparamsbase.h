@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between dash-cli and dashd)
- * of a given instance of the Dash system.
+ * CBaseChainParams defines the base parameters (shared between sanity-cli and sanityd)
+ * of a given instance of the Sanity system.
  */
 class CBaseChainParams
 {

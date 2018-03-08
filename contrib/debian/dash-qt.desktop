@@ -1,12 +1,12 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Dash
-Comment=Dash P2P Cryptocurrency
-Comment[fr]=Dash, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=Dash, eşten eşe kriptografik sanal para birimi
-Exec=dash-qt %u
+Name=Sanity
+Comment=Sanity P2P Cryptocurrency
+Comment[fr]=Sanity, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Sanity, eşten eşe kriptografik sanal para birimi
+Exec=sanity-qt %u
 Terminal=false
 Type=Application
-Icon=dash128
-MimeType=x-scheme-handler/dash;
+Icon=sanity128
+MimeType=x-scheme-handler/sanity;
 Categories=Office;Finance;
