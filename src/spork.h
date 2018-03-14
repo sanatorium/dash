@@ -32,13 +32,25 @@ static const int SPORK_14_REQUIRE_SENTINEL_FLAG                         = 10013;
 static const int64_t SPORK_2_INSTANTSEND_ENABLED_DEFAULT                = 0;            // ON
 static const int64_t SPORK_3_INSTANTSEND_BLOCK_FILTERING_DEFAULT        = 0;            // ON
 static const int64_t SPORK_5_INSTANTSEND_MAX_VALUE_DEFAULT              = 1000;         // 1000 SANITY
-static const int64_t SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT_DEFAULT     = 4070908800ULL;// OFF
+static const int64_t SPORK_8_MASTERNODE_PAYMENT_ENFORCEMENT_DEFAULT     = 0; // MODMOD ON (was 4070908800ULL;// OFF)
 static const int64_t SPORK_9_SUPERBLOCKS_ENABLED_DEFAULT                = 4070908800ULL;// OFF
 static const int64_t SPORK_10_MASTERNODE_PAY_UPDATED_NODES_DEFAULT      = 4070908800ULL;// OFF
 static const int64_t SPORK_12_RECONSIDER_BLOCKS_DEFAULT                 = 0;            // 0 BLOCKS
 static const int64_t SPORK_13_OLD_SUPERBLOCK_FLAG_DEFAULT               = 4070908800ULL;// OFF
 static const int64_t SPORK_14_REQUIRE_SENTINEL_FLAG_DEFAULT             = 4070908800ULL;// OFF
 
+/*
+reference: https://dash-docs.github.io/en/developer-reference#get-tx
+    10001 2 INSTANTSEND_ENABLED Turns on and off InstantSend network wide
+    10002 3 INSTANTSEND_BLOCK_FILTERING Turns on and off InstantSend block filtering
+    10004 5 INSTANTSEND_MAX_VALUE Controls the max value for an InstantSend transaction (currently 2000 dash)
+    10007 8 MASTERNODE_PAYMENT_ENFORCEMENT Requires masternodes to be paid by miners when blocks are processed
+    10008 9 SUPERBLOCKS_ENABLED Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
+    10009 10 MASTERNODE_PAY_UPDATED_NODES Only current protocol version masternode’s will be paid (not older nodes)
+    10011 12 RECONSIDER_BLOCKS Forces reindex of a specified number of blocks to recover from unintentional network forks
+    10012 13 OLD_SUPERBLOCK_FLAG Deprecated. No network function since block 614820
+    10013 14 REQUIRE_SENTINEL_FLAG Only masternode’s running sentinel will be paid
+*/
 extern std::map<uint256, CSporkMessage> mapSporks;
 extern CSporkManager sporkManager;
 

@@ -24,7 +24,48 @@ void MineGenesisBlock(const char* infoS, CBlock &genesis);
 #include "uint256.h"
 #include "arith_uint256.h"
 
+/*
+cat mainnetpublickey.hex:: 049b1ee46b3d3b5bb75f99a8a6d6bb53d04a749a9af264a8215596c7847946f5a5335a46c20f66118296c2a2e3c43bb68a46ad60cc616250334365e3b9ac25a527
+cat testnetpublickey.hex:: 0423b0249b9987e91cebce4119a917f8380b972ad6263cbba25038e48d718dbae92804430e00f7113e8d5816701a846f75de219c31c1916004d481ea63046304b0
+cat mainnetsporkkey.hex::	0471215fbac076b1c0cedc690700c800ef38928b823513d8e4de9ca001b4b6bdaa25ac0baa55519e237aaa8b660b68418a13328d297a78d3f7176a7e1d558da70b
+cat testnetsporkkey.hex::	04e625bc76bb296a1aaddfbbe2313ccd3f4d71d44c09eda93352f49a73bcbf1f974ef40722bbaa2e89a9884b3a87d8cbebb7eae6fcf87f636b07e19335fdf182d5
+cat valertpublickey.hex:: 040c3e84d2abb81ffc46f6f8982cdceed592763609f708ee6d42aecaaf82a2eac6e5677630d1732bd0c29f4a2f293620a82fee34fc490d1f900f008c3b0819cd7a
+*/
 
+/*
+// GENGEN
+validation.cpp    GetBlockSubsidy
+validation.cpp    GetMasternodePayment
+
+CAmount blockReward = nFees + GetBlockSubsidy(pindex->pprev->nBits, pindex->pprev->nHeight, chainparams.GetConsensus());
+
+spork.h: spork defaults; reference: https://dash-docs.github.io/en/developer-reference#get-tx
+    10001 2 INSTANTSEND_ENABLED Turns on and off InstantSend network wide
+    10002 3 INSTANTSEND_BLOCK_FILTERING Turns on and off InstantSend block filtering
+    10004 5 INSTANTSEND_MAX_VALUE Controls the max value for an InstantSend transaction (currently 2000 dash)
+    10007 8 MASTERNODE_PAYMENT_ENFORCEMENT Requires masternodes to be paid by miners when blocks are processed
+    10008 9 SUPERBLOCKS_ENABLED Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
+    10009 10 MASTERNODE_PAY_UPDATED_NODES Only current protocol version masternode’s will be paid (not older nodes)
+    10011 12 RECONSIDER_BLOCKS Forces reindex of a specified number of blocks to recover from unintentional network forks
+    10012 13 OLD_SUPERBLOCK_FLAG Deprecated. No network function since block 614820
+    10013 14 REQUIRE_SENTINEL_FLAG Only masternode’s running sentinel will be paid
+
+amount.h:             static const CAmount MAX_MONEY = 30000000 * COIN; // MODMOD (was 21000000 in dash and bitcoin)
+validation.h:         static const unsigned int DEFAULT_MIN_RELAY_TX_FEE = 1 * CENT; // MODMOD 1 CENT = 1000000 (was 1000 duffy in dash = 0.00001000 dash)
+validation.cpp:       CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly) { // MODMOD blockrewards
+chainparamsseeds.h:   static SeedSpec6 pnSeed6_main[] = { // MODMOD
+
+
+
+consensus.nPowTargetTimespan = 24 * 60 * 60; // MODMOD 1 day
+consensus.nPowTargetSpacing = 2 * 60; // MODMOD 2 minutes
+-> 30 b/h; 720 b/24h; 5050 b/7d; 20160 b/28d; 262800 b/365d
+
+nDefaultPort = 9999;  // mainnet MODMOD
+nDefaultPort = 19999; // testnet MODMOD
+nDefaultPort = 19994; // regtest MODMOD
+
+*/
 static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesisOutputScript, uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     CMutableTransaction txNew;
@@ -51,17 +92,11 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  * Build the genesis block. Note that the output of its generation
  * transaction cannot be spent since it did not originally exist in the
  * database.
- *
- * CBlock(hash=00000ffd590b14, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=e0028e, nTime=1390095618, nBits=1e0ffff0, nNonce=28917698, vtx=1)
- *   CTransaction(hash=e0028e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
- *     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d01044c5957697265642030392f4a616e2f3230313420546865204772616e64204578706572696d656e7420476f6573204c6976653a204f76657273746f636b2e636f6d204973204e6f7720416363657074696e6720426974636f696e73)
- *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
- *   vMerkleTree: e0028e
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {   // GENGEN
     const char* pszTimestamp = "2018 03 11 Bitcoin has died 263 times From BitcoinObituaries dot com";
-    // GENGEN pubkey mainnet
+    // GENGEN mainnetpublickey
     const CScript genesisOutputScript = CScript() << ParseHex("049b1ee46b3d3b5bb75f99a8a6d6bb53d04a749a9af264a8215596c7847946f5a5335a46c20f66118296c2a2e3c43bb68a46ad60cc616250334365e3b9ac25a527") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -94,13 +129,6 @@ void MineGenesisBlock(const char* infoS, CBlock &genesis)
 
 
 
-/*
-cat mainnetpublickey.hex:: 049b1ee46b3d3b5bb75f99a8a6d6bb53d04a749a9af264a8215596c7847946f5a5335a46c20f66118296c2a2e3c43bb68a46ad60cc616250334365e3b9ac25a527
-cat testnetpublickey.hex:: 0423b0249b9987e91cebce4119a917f8380b972ad6263cbba25038e48d718dbae92804430e00f7113e8d5816701a846f75de219c31c1916004d481ea63046304b0
-cat mainnetsporkkey.hex::	0471215fbac076b1c0cedc690700c800ef38928b823513d8e4de9ca001b4b6bdaa25ac0baa55519e237aaa8b660b68418a13328d297a78d3f7176a7e1d558da70b
-cat testnetsporkkey.hex::	04e625bc76bb296a1aaddfbbe2313ccd3f4d71d44c09eda93352f49a73bcbf1f974ef40722bbaa2e89a9884b3a87d8cbebb7eae6fcf87f636b07e19335fdf182d5
-cat valertpublickey.hex:: 040c3e84d2abb81ffc46f6f8982cdceed592763609f708ee6d42aecaaf82a2eac6e5677630d1732bd0c29f4a2f293620a82fee34fc490d1f900f008c3b0819cd7a
-*/
 
 
 
@@ -111,16 +139,15 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 210240; // Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
+        consensus.nSubsidyHalvingInterval = 50 * 262800; // MODMOD disabled - was: Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
 
-        consensus.nMasternodePaymentsStartBlock = 720; // not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
         /* used in mining.cpp:
             result.push_back(Pair("masternode_payments_started", pindexPrev->nHeight + 1 > Params().GetConsensus().nMasternodePaymentsStartBlock));
         */
-
-        consensus.nMasternodePaymentsIncreaseBlock = 2*720; // MODMOD
+        consensus.nMasternodePaymentsStartBlock = 10; // MODMOD not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
+        consensus.nMasternodePaymentsIncreaseBlock = 20; // MODMOD
         consensus.nMasternodePaymentsIncreasePeriod = 720; // MODMOD
-        /* used in validation.cpp
+        /* was used in validation.cpp
             CAmount ret = blockValue/5; // start at 20%
             int nMNPIBlock = Params().GetConsensus().nMasternodePaymentsIncreaseBlock;
             int nMNPIPeriod = Params().GetConsensus().nMasternodePaymentsIncreasePeriod;
@@ -138,18 +165,24 @@ public:
 
 
         consensus.nInstantSendKeepLock = 24;
-        consensus.nBudgetPaymentsStartBlock = 328008; // actual historical value
-        consensus.nBudgetPaymentsCycleBlocks = 16616; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
+
+        consensus.nBudgetPaymentsStartBlock = 50 * 262800; // MODMOD 50y -> disabled
+        consensus.nBudgetPaymentsCycleBlocks = 21900; // MODMOD actual number of blocks per month is 262800 / 12
         consensus.nBudgetPaymentsWindowBlocks = 100;
         consensus.nBudgetProposalEstablishingTime = 60*60*24;
-        consensus.nSuperblockStartBlock = 614820; // The block at which 12.1 goes live (end of final 12.0 budget cycle)
-        consensus.nSuperblockCycle = 16616; // ~(60*24*30)/2.6, actual number of blocks per month is 200700 / 12 = 16725
+
+        consensus.nSuperblockStartBlock = 50 * 262800; // MODMOD 50y -> disabled; The block at which 12.1 goes live (end of final 12.0 budget cycle)
+        consensus.nSuperblockCycle = 21900; // MODMOD actual number of blocks per month is 262800 / 12
+
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
+
         consensus.nMasternodeMinimumConfirmations = 15;
+
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
+
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S("0x000007d91d1254d60e2dd1ae580383070a4ddffa4c64c2eeb4a2f9ecc0414343");
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
@@ -159,11 +192,12 @@ public:
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nPowKGWHeight = 200; // MODMOD nPowKGWHeight >= nPowDGWHeight means "no KGW"
-        consensus.nPowDGWHeight = 200; // MODMOD
 
-        consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
-        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nPowKGWHeight = 50; // MODMOD nPowKGWHeight >= nPowDGWHeight means "no KGW"
+        consensus.nPowDGWHeight = 50; // MODMOD
+
+        consensus.nRuleChangeActivationThreshold = 684; //1916; // agreement 95% (of 2016) messured across  4 retargeting periods
+        consensus.nMinerConfirmationWindow = 720; //2016; // nPowTargetTimespan / nPowTargetSpacing
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
@@ -174,27 +208,16 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1486252800; // Feb 5th, 2017
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1517788800; // Feb 5th, 2018
 
-        // Deployment of DIP0001
+        // Deployment of DIP0001:  initial scaling mechanism for Dash
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1508025600; // Oct 15th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1539561600; // Oct 15th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1517788800; // MODMOD Feb 5th, 2018
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nWindowSize = 4032;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 3226; // 80% of 4032
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000006500074"); // MODMOD
 
-        // By default assume that the signatures in ancestors of this block are valid.
-        // TODOTODO last blockhash of checkpointdata
-        consensus.defaultAssumeValid = uint256S("0x0"); // hash of block nr. xxx
-
-
-        ////////////////////////////////////////////////////////////////////////////////////////////
-        consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
-        consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
-        consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nMinimumChainWork = uint256S("0x00");
-        consensus.defaultAssumeValid = uint256S("0x00");
 
 
         /**
@@ -202,49 +225,59 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0xbe; // GENGEN
+        pchMessageStart[0] = 0xbe; // MODMOD
         pchMessageStart[1] = 0x0c;
         pchMessageStart[2] = 0x6b;
         pchMessageStart[3] = 0xbd;
-        // GENGEN publickey
+
+        // GENGEN valertpublickey
         vAlertPubKey = ParseHex("040c3e84d2abb81ffc46f6f8982cdceed592763609f708ee6d42aecaaf82a2eac6e5677630d1732bd0c29f4a2f293620a82fee34fc490d1f900f008c3b0819cd7a");
-        nDefaultPort = 9999;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
+
+        nDefaultPort = 9999; // MODMOD
+
+        nMaxTipAge = 5 * 60 * 60; // MODMOD 150 (was 144 in Dash) blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
         nDelayGetHeadersTime = 24 * 60 * 60;
-        nPruneAfterHeight = 100000;
+        nPruneAfterHeight = 1000; // MODMOD (was 10000 in Dash an Bitcoin) disable block pruning on blocks below a certain height
+
 
 
         // GENGEN
-        //genesis = CreateGenesisBlock(/*nTime*/ 1520785863, /*nNonce*/ 0, /*nBits*/ 0x1e0ffff0, /*nVersion*/ 1, /*genesisReward*/ 50 * COIN); // (pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward)
-        //consensus.hashGenesisBlock = genesis.GetHash();
-        //printf("MINE MAINNET: %s\n",genesis.ToString().c_str());
+        genesis = CreateGenesisBlock(1520968423  ,1444011, 0x1e0ffff0, 1, 5 * COIN); // nTime, nNonce, nBits, ver
         //MineGenesisBlock("MAINNET", genesis); ///////////////////////////////////////////////////////////////////////////
+
+        consensus.hashGenesisBlock = genesis.GetHash();
 
         /*
         MineGenesisBlock for: MAINNET
-        HASH IS: 00000a22a486c806e2f222e3472c325b59acf36d3a6df06d795597aa3afb9003
-        Converting genesis hash to string:
-        CBlock( hash=00000a22a486c806e2f222e3472c325b59acf36d3a6df06d795597aa3afb9003,
-                ver=1,
-                hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
-                hashMerkleRoot=8e19ce5126fb2c10733d649b9b77cb17885d423d04ae918d4d462457019f32d1,
-                nTime=1520785863,
-                nBits=1e0ffff0,
-                nNonce=811735,
-                vtx=1)
-        CTransaction(hash=8e19ce5126, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295),
-              coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
-            CTxOut(nValue=50.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
+        HASH IS: 0000071bc8bf843dc245cc523a982afbc2df4e7bc18628dfd1152400f16fc5ad
+        Converting genesis hash to string: CBlock(hash=0000071bc8bf843dc245cc523a982afbc2df4e7bc18628dfd1152400f16fc5ad,
+        ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
+        hashMerkleRoot=ff3cbfc7d4dfbbae655560614cd8c4a5228de3154d5f9b2d73b9d9327ecd6a2a, nTime=1520968423, nBits=1e0ffff0,
+        nNonce=1444011, vtx=1)
+          CTransaction(hash=ff3cbfc7d4, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+            CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), #
+            coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
+            CTxOut(nValue=5.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
         */
-        genesis = CreateGenesisBlock(1520785863,811735,0x1e0ffff0, 1, 50 * COIN); // nTime, nNonce, nBits, ver
-        consensus.hashGenesisBlock = genesis.GetHash();
+
 
         // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x00000a22a486c806e2f222e3472c325b59acf36d3a6df06d795597aa3afb9003")); // 0xhash
-        assert(genesis.hashMerkleRoot == uint256S("0x8e19ce5126fb2c10733d649b9b77cb17885d423d04ae918d4d462457019f32d1")); // 0xhashMerkleRoot
+        assert(consensus.hashGenesisBlock == uint256S("0x0000071bc8bf843dc245cc523a982afbc2df4e7bc18628dfd1152400f16fc5ad")); // 0xhash
+        assert(genesis.hashMerkleRoot == uint256S("0xff3cbfc7d4dfbbae655560614cd8c4a5228de3154d5f9b2d73b9d9327ecd6a2a")); // 0xhashMerkleRoot
 
-        printf("GENESIS MAINNET: %s OK\n",genesis.ToString().c_str());
+        // By default assume that the signatures in ancestors of this block are valid.
+        // TODOTODO last blockhash of checkpointdata
+        //If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification
+        consensus.defaultAssumeValid = uint256S("0x0000012fc0739fdb3e392bdfff2c15965a864e18686b00b3e8cdb01476632f0c"); // hash of block nr. x
+        //printf("GENESIS MAINNET: %s OK\n",genesis.ToString().c_str());
+
+
+        // GENGEN REMOVE //////////////////////////////////////////////////////////////////////////////////////////
+        //consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
+        //consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
+        //consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.nMinimumChainWork = uint256S("0x00");
+        //consensus.defaultAssumeValid = uint256S("0x00");
 
         // MODMOD
         vFixedSeeds.clear();
@@ -276,7 +309,7 @@ public:
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
 
-        // GENGEN publickey
+        // GENGEN mainnetsporkkey
         strSporkPubKey = "0471215fbac076b1c0cedc690700c800ef38928b823513d8e4de9ca001b4b6bdaa25ac0baa55519e237aaa8b660b68418a13328d297a78d3f7176a7e1d558da70b";
 
         /**
@@ -289,12 +322,13 @@ public:
          // GENGEN
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (0, consensus.hashGenesisBlock) //(0, uint256S("0x0"))
+            (0, consensus.hashGenesisBlock)
+            // (0, uint256S("0x0"))
             ,
             genesis.nTime, // * UNIX timestamp of last checkpoint block
             0,          // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
-            5000        // * estimated number of transactions per day after checkpoint
+            1000        // * estimated number of transactions per day after checkpoint
         };
     }
 };
@@ -307,17 +341,21 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 210240;
+        consensus.nSubsidyHalvingInterval = 50 * 262800; // MODMOD disabled - was: Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
         consensus.nMasternodePaymentsStartBlock = 100; // not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
         consensus.nMasternodePaymentsIncreaseBlock = 200;
         consensus.nMasternodePaymentsIncreasePeriod = 10;
         consensus.nInstantSendKeepLock = 6;
-        consensus.nBudgetPaymentsStartBlock = 4100;
-        consensus.nBudgetPaymentsCycleBlocks = 50;
+        consensus.nBudgetPaymentsStartBlock = 50 * 262800; // MODMOD 50y -> disabled
+        consensus.nBudgetPaymentsCycleBlocks = 21900; // MODMOD actual number of blocks per month is 262800 / 12
+        //consensus.nBudgetPaymentsStartBlock = 4100;
+        //consensus.nBudgetPaymentsCycleBlocks = 50;
         consensus.nBudgetPaymentsWindowBlocks = 10;
         consensus.nBudgetProposalEstablishingTime = 60*20;
-        consensus.nSuperblockStartBlock = 4200; // NOTE: Should satisfy nSuperblockStartBlock > nBudgetPeymentsStartBlock
-        consensus.nSuperblockCycle = 24; // Superblocks can be issued hourly on testnet
+        consensus.nSuperblockStartBlock = 50 * 262800; // MODMOD 50y -> disabled; The block at which 12.1 goes live (end of final 12.0 budget cycle)
+        consensus.nSuperblockCycle = 21900; // MODMOD actual number of blocks per month is 262800 / 12
+        //consensus.nSuperblockStartBlock = 4200; // NOTE: Should satisfy nSuperblockStartBlock > nBudgetPeymentsStartBlock
+        //consensus.nSuperblockCycle = 24; // Superblocks can be issued hourly on testnet
         consensus.nGovernanceMinQuorum = 1;
         consensus.nGovernanceFilterElements = 500;
         consensus.nMasternodeMinimumConfirmations = 1;
@@ -328,7 +366,7 @@ public:
         consensus.BIP34Hash = uint256S("0x0000047d24635e347be3aaaeb66c26be94901a2f962feccd4f95090191f208c1");
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // MODMOD 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // MODMOD 2.5 minutes
+        consensus.nPowTargetSpacing = 2 * 60; // MODMOD 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 4001; // nPowKGWHeight >= nPowDGWHeight means "no KGW"
@@ -347,7 +385,8 @@ public:
         // Deployment of DIP0001
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1505692800; // Sep 18th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1537228800; // Sep 18th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1517788800; // MODMOD Feb 5th, 2018
+        //consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1537228800; // Sep 18th, 2018
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nWindowSize = 100;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 50; // 50% of 100
 
@@ -396,7 +435,7 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x00000f10ab7fc615d34f4aee832fb56e47a4595d408c91e05fdf8d4b84f506ba")); // 0xhash
         assert(genesis.hashMerkleRoot == uint256S("0x8e19ce5126fb2c10733d649b9b77cb17885d423d04ae918d4d462457019f32d1")); // 0xhashMerkleRoot
 
-        printf("GENESIS TESTNET: %s OK\n",genesis.ToString().c_str());
+        //printf("GENESIS TESTNET: %s OK\n",genesis.ToString().c_str());
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -427,7 +466,7 @@ public:
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
-        // GENGEN
+        // GENGEN testnetsporkkey
         strSporkPubKey = "04e625bc76bb296a1aaddfbbe2313ccd3f4d71d44c09eda93352f49a73bcbf1f974ef40722bbaa2e89a9884b3a87d8cbebb7eae6fcf87f636b07e19335fdf182d5";
 
         checkpointData = (CCheckpointData) {
@@ -449,17 +488,22 @@ class CRegTestParams : public CChainParams {
 public:
     CRegTestParams() {
         strNetworkID = "regtest";
-        consensus.nSubsidyHalvingInterval = 150;
+        consensus.nSubsidyHalvingInterval = 50 * 262800; // MODMOD disabled - was: Note: actual number of blocks per calendar year with DGW v3 is ~200700 (for example 449750 - 249050)
+        //consensus.nSubsidyHalvingInterval = 150;
         consensus.nMasternodePaymentsStartBlock = 240;
         consensus.nMasternodePaymentsIncreaseBlock = 350;
         consensus.nMasternodePaymentsIncreasePeriod = 10;
         consensus.nInstantSendKeepLock = 6;
-        consensus.nBudgetPaymentsStartBlock = 1000;
-        consensus.nBudgetPaymentsCycleBlocks = 50;
+        consensus.nBudgetPaymentsStartBlock = 50 * 262800; // MODMOD 50y -> disabled
+        consensus.nBudgetPaymentsCycleBlocks = 21900; // MODMOD actual number of blocks per month is 262800 / 12
+        //consensus.nBudgetPaymentsStartBlock = 1000;
+        //consensus.nBudgetPaymentsCycleBlocks = 50;
         consensus.nBudgetPaymentsWindowBlocks = 10;
         consensus.nBudgetProposalEstablishingTime = 60*20;
-        consensus.nSuperblockStartBlock = 1500;
-        consensus.nSuperblockCycle = 10;
+        consensus.nSuperblockStartBlock = 50 * 262800; // MODMOD 50y -> disabled; The block at which 12.1 goes live (end of final 12.0 budget cycle)
+        consensus.nSuperblockCycle = 21900; // MODMOD actual number of blocks per month is 262800 / 12
+        //consensus.nSuperblockStartBlock = 1500;
+        //consensus.nSuperblockCycle = 10;
         consensus.nGovernanceMinQuorum = 1;
         consensus.nGovernanceFilterElements = 100;
         consensus.nMasternodeMinimumConfirmations = 1;
@@ -469,12 +513,12 @@ public:
         consensus.BIP34Height = -1; // BIP34 has not necessarily activated on regtest
         consensus.BIP34Hash = uint256();
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Sanity: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Sanity: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // 1 day
+        consensus.nPowTargetSpacing = 2 * 60; // MODMOD 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
-        consensus.nPowKGWHeight = 15200; // same as mainnet
-        consensus.nPowDGWHeight = 34140; // same as mainnet
+        consensus.nPowKGWHeight = 200; // same as mainnet
+        consensus.nPowDGWHeight = 200; // same as mainnet
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
         consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
@@ -497,9 +541,9 @@ public:
         pchMessageStart[1] = 0xc1;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdc;
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
+        nMaxTipAge = 5 * 60 * 60; // MODMOD 150 (was 144 in Dash) blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
         nDelayGetHeadersTime = 0; // never delay GETHEADERS in regtests
-        nDefaultPort = 19994;
+        nDefaultPort = 19994; // MODMOD
         nPruneAfterHeight = 1000;
 
         // GENGEN
