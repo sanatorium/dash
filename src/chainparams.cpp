@@ -50,10 +50,11 @@ spork.h: spork defaults; reference: https://dash-docs.github.io/en/developer-ref
     10012 13 OLD_SUPERBLOCK_FLAG Deprecated. No network function since block 614820
     10013 14 REQUIRE_SENTINEL_FLAG Only masternode’s running sentinel will be paid
 
-amount.h:             static const CAmount MAX_MONEY = 30000000 * COIN; // MODMOD (was 21000000 in dash and bitcoin)
+amount.h:             static const CAmount MAX_MONEY = 50000000 * COIN; // MODMOD hardcap (was 21000000 in dash and bitcoin)
 validation.h:         static const unsigned int DEFAULT_MIN_RELAY_TX_FEE = 1 * CENT; // MODMOD 1 CENT = 1000000 (was 1000 duffy in dash = 0.00001000 dash)
 validation.cpp:       CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly) { // MODMOD blockrewards
 chainparamsseeds.h:   static SeedSpec6 pnSeed6_main[] = { // MODMOD
+masternode.cpp:       case MASTERNODE_WATCHDOG_EXPIRED:       return "ENABLED (NO WATCHDOG)";
 
 
 
@@ -122,9 +123,9 @@ void MineGenesisBlock(const char* infoS, CBlock &genesis)
         if (genesis.nNonce == 0) { ++genesis.nTime; }
     }
     printf("MineGenesisBlock for: %s\n", infoS);
-    printf("HASH IS: %s\n", UintToArith256(genesis.GetHash()).ToString().c_str());
     printf("Converting genesis hash to string: %s\n",genesis.ToString().c_str());
 }
+
 
 
 
@@ -145,23 +146,8 @@ public:
             result.push_back(Pair("masternode_payments_started", pindexPrev->nHeight + 1 > Params().GetConsensus().nMasternodePaymentsStartBlock));
         */
         consensus.nMasternodePaymentsStartBlock = 10; // MODMOD not true, but it's ok as long as it's less then nMasternodePaymentsIncreaseBlock
-        consensus.nMasternodePaymentsIncreaseBlock = 20; // MODMOD
-        consensus.nMasternodePaymentsIncreasePeriod = 720; // MODMOD
-        /* was used in validation.cpp
-            CAmount ret = blockValue/5; // start at 20%
-            int nMNPIBlock = Params().GetConsensus().nMasternodePaymentsIncreaseBlock;
-            int nMNPIPeriod = Params().GetConsensus().nMasternodePaymentsIncreasePeriod;
-                                                                              // mainnet:
-            if(nHeight > nMNPIBlock)                  ret += blockValue / 20; // 158000 - 25.0% - 2014-10-24
-            if(nHeight > nMNPIBlock+(nMNPIPeriod* 1)) ret += blockValue / 20; // 175280 - 30.0% - 2014-11-25
-            if(nHeight > nMNPIBlock+(nMNPIPeriod* 2)) ret += blockValue / 20; // 192560 - 35.0% - 2014-12-26
-            if(nHeight > nMNPIBlock+(nMNPIPeriod* 3)) ret += blockValue / 40; // 209840 - 37.5% - 2015-01-26
-            if(nHeight > nMNPIBlock+(nMNPIPeriod* 4)) ret += blockValue / 40; // 227120 - 40.0% - 2015-02-27
-            if(nHeight > nMNPIBlock+(nMNPIPeriod* 5)) ret += blockValue / 40; // 244400 - 42.5% - 2015-03-30
-            if(nHeight > nMNPIBlock+(nMNPIPeriod* 6)) ret += blockValue / 40; // 261680 - 45.0% - 2015-05-01
-            if(nHeight > nMNPIBlock+(nMNPIPeriod* 7)) ret += blockValue / 40; // 278960 - 47.5% - 2015-06-01
-            if(nHeight > nMNPIBlock+(nMNPIPeriod* 9)) ret += blockValue / 40; // 313520 - 50.0% - 2015-08-03
-        */
+        consensus.nMasternodePaymentsIncreaseBlock = 20; // MODMOD unused: was used in validation.cpp
+        consensus.nMasternodePaymentsIncreasePeriod = 720; // MODMOD unused: was used in validation.cpp
 
 
         consensus.nInstantSendKeepLock = 24;
@@ -226,9 +212,9 @@ public:
          * a large 32-bit integer with any alignment.
          */
         pchMessageStart[0] = 0xbe; // MODMOD
-        pchMessageStart[1] = 0x0c;
-        pchMessageStart[2] = 0x6b;
-        pchMessageStart[3] = 0xbd;
+        pchMessageStart[1] = 0x1c; // MODMOD
+        pchMessageStart[2] = 0x66; // MODMOD
+        pchMessageStart[3] = 0xbf; // MODMOD
 
         // GENGEN valertpublickey
         vAlertPubKey = ParseHex("040c3e84d2abb81ffc46f6f8982cdceed592763609f708ee6d42aecaaf82a2eac6e5677630d1732bd0c29f4a2f293620a82fee34fc490d1f900f008c3b0819cd7a");
@@ -240,44 +226,41 @@ public:
         nPruneAfterHeight = 1000; // MODMOD (was 10000 in Dash an Bitcoin) disable block pruning on blocks below a certain height
 
 
+        bool mineGenesis = false;
+        // GENGEN REMOVE //////////////////////////////////////////////////////////////////////////////////////////
+        consensus.nMinimumChainWork = uint256S("0x00");
 
         // GENGEN
-        genesis = CreateGenesisBlock(1520968423  ,1444011, 0x1e0ffff0, 1, 5 * COIN); // nTime, nNonce, nBits, ver
-        //MineGenesisBlock("MAINNET", genesis); ///////////////////////////////////////////////////////////////////////////
+        if (!mineGenesis) {
+          genesis = CreateGenesisBlock(1521143602,228020,0x1e0ffff0,1,1 * COIN); // nTime, nNonce, nBits, ver
+        } else {
+          std::time_t unixTimeNow = std::time(nullptr);
+          genesis = CreateGenesisBlock(unixTimeNow,0,0x1e0ffff0,1,1 * COIN); // nTime, nNonce, nBits, ver
+          MineGenesisBlock("MAINNET", genesis); ///////////////////////////////////////////////////////////////////////////
+        }
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
         /*
-        MineGenesisBlock for: MAINNET
-        HASH IS: 0000071bc8bf843dc245cc523a982afbc2df4e7bc18628dfd1152400f16fc5ad
-        Converting genesis hash to string: CBlock(hash=0000071bc8bf843dc245cc523a982afbc2df4e7bc18628dfd1152400f16fc5ad,
-        ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
-        hashMerkleRoot=ff3cbfc7d4dfbbae655560614cd8c4a5228de3154d5f9b2d73b9d9327ecd6a2a, nTime=1520968423, nBits=1e0ffff0,
-        nNonce=1444011, vtx=1)
-          CTransaction(hash=ff3cbfc7d4, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-            CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), #
-            coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
-            CTxOut(nValue=5.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
+
+            MineGenesisBlock for: MAINNET
+            Converting genesis hash to string: CBlock(
+            hash=00000fb9fa8a2a479995e18009884fc2ea954780220ddb067870dd4d754912eb, ver=1,
+            hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
+            hashMerkleRoot=39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3,
+            nTime=1521143602, nBits=1e0ffff0, nNonce=228020, vtx=1)
+              CTransaction(hash=39cacd5477, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+                CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
+                CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
+
         */
 
 
         // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x0000071bc8bf843dc245cc523a982afbc2df4e7bc18628dfd1152400f16fc5ad")); // 0xhash
-        assert(genesis.hashMerkleRoot == uint256S("0xff3cbfc7d4dfbbae655560614cd8c4a5228de3154d5f9b2d73b9d9327ecd6a2a")); // 0xhashMerkleRoot
+        assert(consensus.hashGenesisBlock == uint256S("0x00000fb9fa8a2a479995e18009884fc2ea954780220ddb067870dd4d754912eb")); // 0xhash
+        assert(genesis.hashMerkleRoot == uint256S("0x39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3")); // 0xhashMerkleRoot
 
-        // By default assume that the signatures in ancestors of this block are valid.
-        // TODOTODO last blockhash of checkpointdata
-        //If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification
-        consensus.defaultAssumeValid = uint256S("0x0000012fc0739fdb3e392bdfff2c15965a864e18686b00b3e8cdb01476632f0c"); // hash of block nr. x
-        //printf("GENESIS MAINNET: %s OK\n",genesis.ToString().c_str());
-
-
-        // GENGEN REMOVE //////////////////////////////////////////////////////////////////////////////////////////
-        //consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
-        //consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
-        //consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nMinimumChainWork = uint256S("0x00");
-        //consensus.defaultAssumeValid = uint256S("0x00");
+        consensus.defaultAssumeValid = uint256S("0x00"); // hash of block nr. x
 
         // MODMOD
         vFixedSeeds.clear();

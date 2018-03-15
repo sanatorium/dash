@@ -1230,84 +1230,59 @@ NOTE:   unlike bitcoin we are using PREVIOUS block height here,
 */
 CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
 { // MODMOD blockrewards
-    double dDiff;
-    CAmount nSubsidyBase;
+    CAmount nSubsidyBase = 1;
+    CAmount nLuckyBlockFactor = 1;
+    int nHeight = nPrevHeight + 1;
 
-    nSubsidyBase = 50;
+    // supply at block 411137: 31.954.053 (base rewards) + 9.444.837 (lucky block rewards) = 41.398.890
+    // supply after block 411137: increasing by 262.800 (base) + 86.724 (lucky) = 349.524 coins every year
+    // supply after 10 years: 44.347.341
+    // -> hardcap = 50.000.000, triggered after approx. 25 years
+    if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
+        if (nHeight >= 411138) nSubsidyBase = 1; // the day(s) after
+        else if (nHeight >= 410417) nSubsidyBase = 1111; // last superday
+        else if (nHeight >= 367216) nSubsidyBase = 100;  // last 60 days before min reward
+        else if (nHeight >= 345615) nSubsidyBase = 1;
+        else if (nHeight >= 324014) nSubsidyBase = 6;
+        else if (nHeight >= 302413) nSubsidyBase = 12;
+        else if (nHeight >= 280812) nSubsidyBase = 25;
+        else if (nHeight >= 259211) nSubsidyBase = 50;
+        else if (nHeight >= 237610) nSubsidyBase = 100;
+        else if (nHeight >= 216009) nSubsidyBase = 200;
+        else if (nHeight >= 172808) nSubsidyBase = 150;
+        else if (nHeight >= 108007) nSubsidyBase = 100;
+        else if (nHeight >= 86406) nSubsidyBase = 50;
+        else if (nHeight >= 64805) nSubsidyBase = 25;
+        else if (nHeight >= 43204) nSubsidyBase = 12;
+        else if (nHeight >= 21603) nSubsidyBase = 6;
+        else if (nHeight >= 2) nSubsidyBase = 1; // slow start (30 days) for network adjustements and ANN
+        else if (nHeight == 1) nSubsidyBase = 3333333; // premine 3.3 mio
 
-    if (nPrevHeight <= 4500 && Params().NetworkIDString() == CBaseChainParams::MAIN) {
+        // 2 blocks a day (every 300 blocks = apprx. every 10 hours) get 100x nSubsidyBase
+        if (nHeight % 300 == 0) nLuckyBlockFactor = 100;
     }
 
-    if (nSubsidyBase > 100) nSubsidyBase = 100;
-    else if (nSubsidyBase < 1) nSubsidyBase = 1;
+    CAmount nSubsidy = nLuckyBlockFactor * nSubsidyBase * COIN;
+    //LogPrintf(">>>>> GetBlockSubsidy: prevHeight %u diff %4.2f reward %d\n", nPrevHeight, dDiff, nSubsidy);
 
-    // LogPrintf("height %u diff %4.2f reward %d\n", nPrevHeight, dDiff, nSubsidyBase);
-    CAmount nSubsidy = nSubsidyBase * COIN;
-
-    // Hard fork to reduce the block reward by 10 extra percent (allowing budget/superblocks)
-    CAmount nSuperblockPart = (nPrevHeight > consensusParams.nBudgetPaymentsStartBlock) ? nSubsidy/10 : 0;
-
-    return fSuperblockPartOnly ? nSuperblockPart : nSubsidy - nSuperblockPart;
-
-    // MODMOD
-    //    if (nPrevHeight <= 4500 && Params().NetworkIDString() == CBaseChainParams::MAIN) {
-    //        /* a bug which caused diff to not be correctly calculated */
-    //        dDiff = (double)0x0000ffff / (double)(nPrevBits & 0x00ffffff);
-    //    } else {
-    //        dDiff = ConvertBitsToDouble(nPrevBits);
-    //    }
-
-    //    if (nPrevHeight < 5465) {
-    //        // Early ages...
-    //        // 1111/((x+1)^2)
-    //        nSubsidyBase = (1111.0 / (pow((dDiff+1.0),2.0)));
-    //        if(nSubsidyBase > 500) nSubsidyBase = 500;
-    //        else if(nSubsidyBase < 1) nSubsidyBase = 1;
-    //    } else if (nPrevHeight < 17000 || (dDiff <= 75 && nPrevHeight < 24000)) {
-    //        // CPU mining era
-    //        // 11111/(((x+51)/6)^2)
-    //        nSubsidyBase = (11111.0 / (pow((dDiff+51.0)/6.0,2.0)));
-    //        if(nSubsidyBase > 500) nSubsidyBase = 500;
-    //        else if(nSubsidyBase < 25) nSubsidyBase = 25;
-    //    } else {
-    //        // GPU/ASIC mining era
-    //        // 2222222/(((x+2600)/9)^2)
-    //        nSubsidyBase = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
-    //        if(nSubsidyBase > 25) nSubsidyBase = 25;
-    //        else if(nSubsidyBase < 5) nSubsidyBase = 5;
-    //    }
-
-    //    // LogPrintf("height %u diff %4.2f reward %d\n", nPrevHeight, dDiff, nSubsidyBase);
-    //    CAmount nSubsidy = nSubsidyBase * COIN;
-
-    //    // yearly decline of production by ~7.1% per year, projected ~18M coins max by year 2050+.
-    //    for (int i = consensusParams.nSubsidyHalvingInterval; i <= nPrevHeight; i += consensusParams.nSubsidyHalvingInterval) {
-    //        nSubsidy -= nSubsidy/14;
-    //    }
-
-    //    // Hard fork to reduce the block reward by 10 extra percent (allowing budget/superblocks)
-    //    CAmount nSuperblockPart = (nPrevHeight > consensusParams.nBudgetPaymentsStartBlock) ? nSubsidy/10 : 0;
-
-    //    return fSuperblockPartOnly ? nSuperblockPart : nSubsidy - nSuperblockPart;
+    return nSubsidy;
 }
 
 CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
-    CAmount ret = blockValue/5; // start at 20%
+    CAmount ret = blockValue;
 
-    int nMNPIBlock = Params().GetConsensus().nMasternodePaymentsIncreaseBlock;
-    int nMNPIPeriod = Params().GetConsensus().nMasternodePaymentsIncreasePeriod;
+    //int nMNPIBlock = Params().GetConsensus().nMasternodePaymentsIncreaseBlock;
+    //int nMNPIPeriod = Params().GetConsensus().nMasternodePaymentsIncreasePeriod;
 
-                                                                      // mainnet:
-    if(nHeight > nMNPIBlock)                  ret += blockValue / 20; // 158000 - 25.0% - 2014-10-24
-    if(nHeight > nMNPIBlock+(nMNPIPeriod* 1)) ret += blockValue / 20; // 175280 - 30.0% - 2014-11-25
-    if(nHeight > nMNPIBlock+(nMNPIPeriod* 2)) ret += blockValue / 20; // 192560 - 35.0% - 2014-12-26
-    if(nHeight > nMNPIBlock+(nMNPIPeriod* 3)) ret += blockValue / 40; // 209840 - 37.5% - 2015-01-26
-    if(nHeight > nMNPIBlock+(nMNPIPeriod* 4)) ret += blockValue / 40; // 227120 - 40.0% - 2015-02-27
-    if(nHeight > nMNPIBlock+(nMNPIPeriod* 5)) ret += blockValue / 40; // 244400 - 42.5% - 2015-03-30
-    if(nHeight > nMNPIBlock+(nMNPIPeriod* 6)) ret += blockValue / 40; // 261680 - 45.0% - 2015-05-01
-    if(nHeight > nMNPIBlock+(nMNPIPeriod* 7)) ret += blockValue / 40; // 278960 - 47.5% - 2015-06-01
-    if(nHeight > nMNPIBlock+(nMNPIPeriod* 9)) ret += blockValue / 40; // 313520 - 50.0% - 2015-08-03
+    if      (nHeight >= 237610) ret = blockValue * 0.80; // after 11 month 80 % of blockrewards to masternodes
+    else if (nHeight >= 172808) ret = blockValue * 0.70;
+    else if (nHeight >= 108007) ret = blockValue * 0.60;
+    else if (nHeight >=  86406) ret = blockValue * 0.30;
+    else if (nHeight >=  64805) ret = blockValue * 0.25;
+    else if (nHeight >=  43204) ret = blockValue * 0.20;
+    else if (nHeight >=  21603) ret = blockValue * 0.10;
+    else                        ret = blockValue * 0.05; // slow start masternode rewards
 
     return ret;
 }
