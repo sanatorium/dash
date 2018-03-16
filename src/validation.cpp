@@ -1,6 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
+// Copyright (c) 2018 The Sanity Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1280,8 +1281,8 @@ CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
     else if (nHeight >= 108007) ret = blockValue * 0.60;
     else if (nHeight >=  86406) ret = blockValue * 0.30;
     else if (nHeight >=  64805) ret = blockValue * 0.25;
-    else if (nHeight >=  43204) ret = blockValue * 0.20;
-    else if (nHeight >=  21603) ret = blockValue * 0.10;
+    else if (nHeight >=  43204) ret = blockValue * 0.20; // 60 days after genesis
+    else if (nHeight >=  21603) ret = blockValue * 0.10; // 30 days after genesis
     else                        ret = blockValue * 0.05; // slow start masternode rewards
 
     return ret;
@@ -2007,9 +2008,9 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     // Now that the whole chain is irreversibly beyond that time it is applied to all blocks except the
     // two in the chain that violate it. This prevents exploiting the issue against nodes during their
     // initial block download.
-    bool fEnforceBIP30 = (!pindex->phashBlock) || // Enforce on CreateNewBlock invocations which don't have a hash.
-                          !((pindex->nHeight==91842 && pindex->GetBlockHash() == uint256S("0x00000000000a4d0a398161ffc163c503763b1f4360639393e0e4c8e300e0caec")) ||
-                           (pindex->nHeight==91880 && pindex->GetBlockHash() == uint256S("0x00000000000743f190a18c5577a3c2d2a1f610ae9601ac046a38084ccb7cd721")));
+    bool fEnforceBIP30 = (!pindex->phashBlock); // MODMOD // Enforce on CreateNewBlock invocations which don't have a hash.
+    // MODMOD          || !((pindex->nHeight==91842 && pindex->GetBlockHash() == uint256S("0x00000000000a4d0a398161ffc163c503763b1f4360639393e0e4c8e300e0caec"))
+    // MODMOD          || (pindex->nHeight==91880 && pindex->GetBlockHash() == uint256S("0x00000000000743f190a18c5577a3c2d2a1f610ae9601ac046a38084ccb7cd721")));
 
     // Once BIP34 activated it was not possible to create new duplicate coinbases and thus other than starting
     // with the 2 existing duplicate coinbase pairs, not possible to create overwriting txs.  But by the
