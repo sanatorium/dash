@@ -246,7 +246,7 @@ public:
 
         // GENGEN
         if (!mineGenesis) {
-          genesis = CreateGenesisBlock(1521143602,228020,0x1e0ffff0,1,1 * COIN); // nTime, nNonce, nBits, ver
+          genesis = CreateGenesisBlock(1521412541,1808751,0x1e0ffff0,1,1 * COIN); // nTime, nNonce, nBits, ver
         } else {
           std::time_t unixTimeNow = std::time(nullptr);
           genesis = CreateGenesisBlock(unixTimeNow,0,0x1e0ffff0,1,1 * COIN); // nTime, nNonce, nBits, ver
@@ -256,22 +256,20 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         /*
-
-            MineGenesisBlock for: MAINNET
-            Converting genesis hash to string: CBlock(
-            hash=00000fb9fa8a2a479995e18009884fc2ea954780220ddb067870dd4d754912eb, ver=1,
-            hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
-            hashMerkleRoot=39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3,
-            nTime=1521143602, nBits=1e0ffff0, nNonce=228020, vtx=1)
-              CTransaction(hash=39cacd5477, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-                CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
-                CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
+        MineGenesisBlock for: MAINNET
+        Converting genesis hash to string: CBlock(hash=000003015164c496b08c5b1cfc566b9a635854fd32e3a129f879f3e3503e07c6,
+        ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
+        hashMerkleRoot=39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3,
+         nTime=1521412541, nBits=1e0ffff0, nNonce=1808751, vtx=1)
+          CTransaction(hash=39cacd5477, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+            CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
+            CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
 
         */
 
 
         // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x00000fb9fa8a2a479995e18009884fc2ea954780220ddb067870dd4d754912eb")); // 0xhash
+        assert(consensus.hashGenesisBlock == uint256S("0x000003015164c496b08c5b1cfc566b9a635854fd32e3a129f879f3e3503e07c6")); // 0xhash
         assert(genesis.hashMerkleRoot == uint256S("0x39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3")); // 0xhashMerkleRoot
 
         consensus.defaultAssumeValid = uint256S("0x00"); // hash of block nr. x
