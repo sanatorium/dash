@@ -246,9 +246,10 @@
         <file alias="drkblue_leftArrow_small">res/images/drkblue/drkblue_leftArrow_small.png</file>
         <file alias="drkblue_rightArrow_small">res/images/drkblue/drkblue_rightArrow_small.png</file>
         <file alias="drkblue_qtreeview_selected">res/images/drkblue/drkblue_qtreeview_selected.png</file>
-        <file alias="drkblue_walletFrame_bg">res/images/drkblue/drkblue_walletFrame_bg.png</file>
+        <file alias="walletFrame_bg">res/images/drkblue/walletFrame_bg.png</file>
         <file alias="splash">res/images/drkblue/splash.png</file>
         <file alias="splash_testnet">res/images/drkblue/splash_testnet.png</file>
+        <file alias="splash_regtest">res/images/drkblue/splash_regtest.png</file>
     </qresource>
     <qresource prefix="/images/crownium">
         <file alias="about">res/images/crownium/about.png</file>
@@ -261,9 +262,10 @@
         <file alias="drkblue_leftArrow_small">res/images/crownium/drkblue_leftArrow_small.png</file>
         <file alias="drkblue_rightArrow_small">res/images/crownium/drkblue_rightArrow_small.png</file>
         <file alias="drkblue_qtreeview_selected">res/images/crownium/drkblue_qtreeview_selected.png</file>
-        <file alias="drkblue_walletFrame_bg">res/images/crownium/drkblue_walletFrame_bg.png</file>
+        <file alias="walletFrame_bg">res/images/crownium/walletFrame_bg.png</file>
         <file alias="splash">res/images/crownium/splash.png</file>
         <file alias="splash_testnet">res/images/crownium/splash_testnet.png</file>
+        <file alias="splash_regtest">res/images/crownium/splash_regtest.png</file>
     </qresource>
     <qresource prefix="/images/light">
         <file alias="about">res/images/light/about.png</file>
@@ -276,9 +278,10 @@
         <file alias="drkblue_leftArrow_small">res/images/light/drkblue_leftArrow_small.png</file>
         <file alias="drkblue_rightArrow_small">res/images/light/drkblue_rightArrow_small.png</file>
         <file alias="drkblue_qtreeview_selected">res/images/light/drkblue_qtreeview_selected.png</file>
-        <file alias="drkblue_walletFrame_bg">res/images/light/drkblue_walletFrame_bg.png</file>
+        <file alias="walletFrame_bg">res/images/light/walletFrame_bg.png</file>
         <file alias="splash">res/images/light/splash.png</file>
         <file alias="splash_testnet">res/images/light/splash_testnet.png</file>
+        <file alias="splash_regtest">res/images/light/splash_regtest.png</file>
     </qresource>
     <qresource prefix="/images/trad">
         <file alias="about">res/images/trad/about.png</file>
@@ -289,9 +292,10 @@
         <file alias="drkblue_leftArrow_small">res/images/trad/drkblue_leftArrow_small.png</file>
         <file alias="drkblue_rightArrow_small">res/images/trad/drkblue_rightArrow_small.png</file>
         <file alias="drkblue_qtreeview_selected">res/images/trad/drkblue_qtreeview_selected.png</file>
-        <file alias="drkblue_walletFrame_bg">res/images/trad/drkblue_walletFrame_bg.png</file>
+        <file alias="walletFrame_bg">res/images/trad/walletFrame_bg.png</file>
         <file alias="splash">res/images/trad/splash.png</file>
         <file alias="splash_testnet">res/images/trad/splash_testnet.png</file>
+        <file alias="splash_regtest">res/images/trad/splash_regtest.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>

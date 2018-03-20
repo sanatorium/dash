@@ -4141,12 +4141,16 @@ https://www.transifex.com/projects/p/sanity/</translation>
         <translation>Kết nối tới KeePassHttp trên cổng &lt;port&gt; (ngầm định: %u)</translation>
     </message>
     <message>
-        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
-        <translation>Bản quyền (C) 2009-%i bởi Nhóm phát triển Bitcoin Core</translation>
+        <source>Copyright (C) 2009-2014 The Bitcoin Core Developers</source>
+        <translation>Bản quyền (C) 2009-2014 bởi Nhóm phát triển Bitcoin Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2014-%i The Sanity Core Developers</source>
-        <translation>Bản quyền (C) 2014-%i bởi Nhóm phát triển Sanity Core</translation>
+        <source>Copyright (C) 2014-2018 The Dash Core Developers</source>
+        <translation>Bản quyền (C) 2014-2018 bởi Nhóm phát triển Dash Core</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2017-%i The Sanity Core Developers</source>
+        <translation>Bản quyền (C) 2017-%i bởi Nhóm phát triển Sanity Core</translation>
     </message>
     <message>
         <source>Enable the client to act as a masternode (0-1, default: %u)</source>

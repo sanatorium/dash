@@ -1,6 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
-// Copyright (c) 2014-2017 The Dash Core developers
+// Copyright (c) 2014-2018 The Dash Core developers
 // Copyright (c) 2018 The Sanity Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -67,7 +67,10 @@ clientversion.h:      #define COPYRIGHT_STR "2009-2014 The Bitcoin Core Develope
 configure.ac          define(_CLIENT_VERSION_MAJOR, 1) // was: 0
 configure.ac          define(_COPYRIGHT_YEAR, 2018)
 init.cpp              FormatParagraph(strprintf(_("Copyright (C) 2017-%i The Sanity Core Developers"), COPYRIGHT_YEAR)) + "\n" +
-Info.plist.in         <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-2014 The Bitcoin Core developers, 2014-2017 The Dash Core developers, 2017-@COPYRIGHT_YEAR@ The Sanity Core developers</string>
+Info.plist.in         <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-2014 The Bitcoin Core developers, 2014-2018 The Dash Core developers, 2017-@COPYRIGHT_YEAR@ The Sanity Core developers</string>
+qt/splashscreen.cpp   pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+20,copyrightTextSanity); // MODMOD
+qt/sanitystrings.cpp  QT_TRANSLATE_NOOP("sanity-core", "Copyright (C) 2017-%i The Sanity Core Developers"),
+
 
 org.sanity.Sanity
 
@@ -187,8 +190,8 @@ public:
         consensus.BIP34Hash = uint256S("0x0"); // MODMOD uint256S("0x000007d91d1254d60e2dd1ae580383070a4ddffa4c64c2eeb4a2f9ecc0414343");
 
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // MODMOD 1 day
-        consensus.nPowTargetSpacing = 2 * 60; // MODMOD 2 minutes
+        consensus.nPowTargetTimespan = 1 * 60 * 60; // MODMOD 1 h (was: 1 day)
+        consensus.nPowTargetSpacing = 5; ////2 * 60; // MODMOD 2 minutes
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
@@ -246,10 +249,10 @@ public:
 
         // GENGEN
         if (!mineGenesis) {
-          genesis = CreateGenesisBlock(1521412541,1808751,0x1e0ffff0,1,1 * COIN); // nTime, nNonce, nBits, ver
+          genesis = CreateGenesisBlock(1521548862,661039,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
         } else {
           std::time_t unixTimeNow = std::time(nullptr);
-          genesis = CreateGenesisBlock(unixTimeNow,0,0x1e0ffff0,1,1 * COIN); // nTime, nNonce, nBits, ver
+          genesis = CreateGenesisBlock(unixTimeNow,0,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
           MineGenesisBlock("MAINNET", genesis); ///////////////////////////////////////////////////////////////////////////
         }
 
@@ -257,19 +260,18 @@ public:
 
         /*
         MineGenesisBlock for: MAINNET
-        Converting genesis hash to string: CBlock(hash=000003015164c496b08c5b1cfc566b9a635854fd32e3a129f879f3e3503e07c6,
+        Converting genesis hash to string: CBlock(hash=00000f4ecd1e4516b7f1746dee37d211decfa64415a93680ccacfc62bb643542,
         ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
         hashMerkleRoot=39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3,
-         nTime=1521412541, nBits=1e0ffff0, nNonce=1808751, vtx=1)
+        nTime=1521548862, nBits=1e0ffff0, nNonce=661039, vtx=1)
           CTransaction(hash=39cacd5477, ver=1, vin.size=1, vout.size=1, nLockTime=0)
             CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
             CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
-
-        */
+                    */
 
 
         // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x000003015164c496b08c5b1cfc566b9a635854fd32e3a129f879f3e3503e07c6")); // 0xhash
+        assert(consensus.hashGenesisBlock == uint256S("0x00000f4ecd1e4516b7f1746dee37d211decfa64415a93680ccacfc62bb643542")); // 0xhash
         assert(genesis.hashMerkleRoot == uint256S("0x39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3")); // 0xhashMerkleRoot
 
         consensus.defaultAssumeValid = uint256S("0x00"); // hash of block nr. x

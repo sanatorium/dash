@@ -4150,8 +4150,12 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Copyright (C) 2009-%i Bitcoin Core Kehittäjät</translation>
     </message>
     <message>
-        <source>Copyright (C) 2014-%i The Sanity Core Developers</source>
-        <translation>Copyright (C) 2014-%i Sanity Core Kehittäjät</translation>
+        <source>Copyright (C) 2014-2018 The Dash Core Developers</source>
+        <translation>Copyright (C) 2014-2018 Dash Core Kehittäjät</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2017-%i The Sanity Core Developers</source>
+        <translation>Copyright (C) 2017-%i Sanity Core Kehittäjät</translation>
     </message>
     <message>
         <source>Enable the client to act as a masternode (0-1, default: %u)</source>

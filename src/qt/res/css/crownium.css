@@ -1,5 +1,5 @@
 WalletFrame {
-border-image: url(':/images/crownium/drkblue_walletFrame_bg') 0 0 0 0 stretch stretch;
+border-image: url(':/images/crownium/walletFrame_bg') 0 0 0 0 stretch stretch;
 /* background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #222222, stop: .1 #EEEEEE, stop: .9 #EEEEEE, stop: 1 #222222); */
 border-top:0px solid #000;
 margin:0;
@@ -413,7 +413,7 @@ background-image: url(':/images/crownium/drkblue_rightArrow_small');
 /* DIALOG BOXES */
 
 QDialog {
-border-image: url(':/images/crownium/drkblue_walletFrame_bg') 0 0 0 0 stretch stretch;
+border-image: url(':/images/crownium/walletFrame_bg') 0 0 0 0 stretch stretch;
 }
 
 QDialog .QTabWidget {
@@ -503,7 +503,7 @@ border:1px solid #9e9e9e;
 
 /* Dialog: Sign / Verify Message */
 QDialog#SignVerifyMessageDialog {
-border-image: url(':/images/crownium/drkblue_walletFrame_bg') 0 0 0 0 stretch stretch;
+border-image: url(':/images/crownium/walletFrame_bg') 0 0 0 0 stretch stretch;
 }
 
 QDialog#SignVerifyMessageDialog QPushButton#addressBookButton_SM { /* Address Book Button */
@@ -731,7 +731,7 @@ background:#ff0000;
 }
 
 QDialog#RPCConsole QWidget#tab_nettraffic {
-border-image: url(':/images/crownium/drkblue_walletFrame_bg') 0 0 0 0 stretch stretch;
+border-image: url(':/images/crownium/walletFrame_bg') 0 0 0 0 stretch stretch;
 }
 
 QDialog#RPCConsole QWidget#tab_nettraffic  QSlider#sldGraphRange{ /* Network slider background */
@@ -740,11 +740,11 @@ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #000000, s
 
 
 QDialog#RPCConsole QWidget#tab_info {
-border-image: url(':/images/crownium/drkblue_walletFrame_bg') 0 0 0 0 stretch stretch;
+border-image: url(':/images/crownium/walletFrame_bg') 0 0 0 0 stretch stretch;
 }
 
 QDialog#RPCConsole QWidget#tab_repair  {
-border-image: url(':/images/crownium/drkblue_walletFrame_bg') 0 0 0 0 stretch stretch;
+border-image: url(':/images/crownium/walletFrame_bg') 0 0 0 0 stretch stretch;
 }
 
 /* HELP MENU */
@@ -1177,7 +1177,7 @@ background-color:transparent;
 }
 
 QWidget#contentWidget { /* The actual content with the text/buttons/etc... */
-border-image: url(':/images/crownium/drkblue_walletFrame_bg') 0 0 0 0 stretch stretch;
+border-image: url(':/images/crownium/walletFrame_bg') 0 0 0 0 stretch stretch;
 border-top:0px solid #000;
 margin:0;
 padding-top:20px;

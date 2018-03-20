@@ -454,6 +454,7 @@ RES_IMAGES = \
   qt/res/images/drkblue/about.png \
   qt/res/images/drkblue/splash.png \
   qt/res/images/drkblue/splash_testnet.png \
+  qt/res/images/drkblue/splash_regtest.png \
   qt/res/images/drkblue/sanity_logo_horizontal.png \
   qt/res/images/drkblue/unchecked.png \
   qt/res/images/drkblue/checked.png \
@@ -463,10 +464,11 @@ RES_IMAGES = \
   qt/res/images/drkblue/drkblue_leftArrow_small.png \
   qt/res/images/drkblue/drkblue_rightArrow_small.png \
   qt/res/images/drkblue/drkblue_qtreeview_selected.png \
-  qt/res/images/drkblue/drkblue_walletFrame_bg.png \
+  qt/res/images/drkblue/walletFrame_bg.png \
   qt/res/images/crownium/about.png \
   qt/res/images/crownium/splash.png \
   qt/res/images/crownium/splash_testnet.png \
+  qt/res/images/crownium/splash_regtest.png \
   qt/res/images/crownium/sanity_logo_horizontal.png \
   qt/res/images/crownium/unchecked.png \
   qt/res/images/crownium/checked.png \
@@ -476,10 +478,11 @@ RES_IMAGES = \
   qt/res/images/crownium/drkblue_leftArrow_small.png \
   qt/res/images/crownium/drkblue_rightArrow_small.png \
   qt/res/images/crownium/drkblue_qtreeview_selected.png \
-  qt/res/images/crownium/drkblue_walletFrame_bg.png \
+  qt/res/images/crownium/walletFrame_bg.png \
   qt/res/images/light/about.png \
   qt/res/images/light/splash.png \
   qt/res/images/light/splash_testnet.png \
+  qt/res/images/light/splash_regtest.png \
   qt/res/images/light/sanity_logo_horizontal.png \
   qt/res/images/light/unchecked.png \
   qt/res/images/light/checked.png \
@@ -489,10 +492,11 @@ RES_IMAGES = \
   qt/res/images/light/drkblue_leftArrow_small.png \
   qt/res/images/light/drkblue_rightArrow_small.png \
   qt/res/images/light/drkblue_qtreeview_selected.png \
-  qt/res/images/light/drkblue_walletFrame_bg.png \
+  qt/res/images/light/walletFrame_bg.png \
   qt/res/images/trad/about.png \
   qt/res/images/trad/splash.png \
   qt/res/images/trad/splash_testnet.png \
+  qt/res/images/trad/splash_regtest.png \
   qt/res/images/trad/sanity_logo_horizontal.png \
   qt/res/images/trad/drkblue_downArrow.png \
   qt/res/images/trad/drkblue_downArrow_small.png \
@@ -500,7 +504,7 @@ RES_IMAGES = \
   qt/res/images/trad/drkblue_leftArrow_small.png \
   qt/res/images/trad/drkblue_rightArrow_small.png \
   qt/res/images/trad/drkblue_qtreeview_selected.png \
-  qt/res/images/trad/drkblue_walletFrame_bg.png
+  qt/res/images/trad/walletFrame_bg.png
 
 RES_CSS = \
   qt/res/css/drkblue.css \

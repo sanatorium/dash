@@ -3797,12 +3797,16 @@ por ejemplo: alertnotify=echo %%s | mail -s "Alerta de Sanity" admin@foo.com
         <translation>Conectarse a KeePassHttp a través del puerto &lt;port&gt; (predeterminado: %u)</translation>
     </message>
     <message>
-        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
-        <translation>Copyright (C) 2009-%i Los Desarrolladores de Bitcoin Core</translation>
+        <source>Copyright (C) 2009-2014 The Bitcoin Core Developers</source>
+        <translation>Copyright (C) 2009-2014 Los Desarrolladores de Bitcoin Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2014-%i The Sanity Core Developers</source>
-        <translation>Copyright (C) 2014-%i Los Desarrolladores de Sanity Core</translation>
+        <source>Copyright (C) 2014-2018 The Dash Core Developers</source>
+        <translation>Copyright (C) 2014-2018 Los Desarrolladores de Dash Core</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2017-%i The Sanity Core Developers</source>
+        <translation>Copyright (C) 2017-%i Los Desarrolladores de Sanity Core</translation>
     </message>
     <message>
         <source>Could not parse -rpcbind value %s as network address</source>

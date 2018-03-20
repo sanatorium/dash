@@ -3830,12 +3830,16 @@ https://www.transifex.com/projects/p/sanity/</translation>
         <translation>Pripojiť ku KeePassHttp na porte &lt;port&gt; (predvolené: %u)</translation>
     </message>
     <message>
-        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
-        <translation>Autorské práva (C) 2009-%i Vývojári Bitcoin Core</translation>
+        <source>Copyright (C) 2009-2014 The Bitcoin Core Developers</source>
+        <translation>Autorské práva (C) 2009-2014 Vývojári Bitcoin Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2014-%i The Sanity Core Developers</source>
-        <translation>Autorské práva (C) 2014-%i Vývojári jadra Sanity</translation>
+        <source>Copyright (C) 2014-2018 The Dash Core Developers</source>
+        <translation>Autorské práva (C) 2014-2018 Vývojári jadra Dash</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2017-%i The Sanity Core Developers</source>
+        <translation>Autorské práva (C) 2017-%i Vývojári jadra Sanity</translation>
     </message>
     <message>
         <source>Enable the client to act as a masternode (0-1, default: %u)</source>

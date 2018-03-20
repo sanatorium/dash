@@ -3692,12 +3692,16 @@ https://www.transifex.com/projects/p/sanity/</translation>
         <translation>Conectar a KeePassHttp na porta &lt;port&gt; (default: %u)</translation>
     </message>
     <message>
-        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
-        <translation>Copyright (C) 2009-%i The Bitcoin Core Developers</translation>
+        <source>Copyright (C) 2009-2014 The Bitcoin Core Developers</source>
+        <translation>Copyright (C) 2009-2014 The Bitcoin Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2014-%i The Sanity Core Developers</source>
-        <translation>Copyright (C) 2014-%i Sanity Core Developers</translation>
+        <source>Copyright (C) 2014-2018 The Dash Core Developers</source>
+        <translation>Copyright (C) 2014-2018 Dash Core Developers</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2017-%i The Sanity Core Developers</source>
+        <translation>Copyright (C) 2017-%i Sanity Core Developers</translation>
     </message>
     <message>
         <source>Could not parse -rpcbind value %s as network address</source>

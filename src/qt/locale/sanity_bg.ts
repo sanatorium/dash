@@ -4141,12 +4141,16 @@ https://www.transifex.com/projects/p/sanity/</translation>
         <translation>Свързване към KeePassHttp през порт &lt;port&gt; (по подразбиране: %u)</translation>
     </message>
     <message>
-        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
-        <translation>Запазени права (C) 2009-%i Bitcoin Core разработчици</translation>
+        <source>Copyright (C) 2009-2014 The Bitcoin Core Developers</source>
+        <translation>Запазени права (C) 2009-2014 Bitcoin Core разработчици</translation>
     </message>
     <message>
-        <source>Copyright (C) 2014-%i The Sanity Core Developers</source>
-        <translation>Запазени права (C) 2014-%i Sanity Core разработчиците</translation>
+        <source>Copyright (C) 2014-2018 The Dash Core Developers</source>
+        <translation>Запазени права (C) 2014-2018 Dash Core разработчиците</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2017-%i The Sanity Core Developers</source>
+        <translation>Запазени права (C) 2017-%i Sanity Core разработчиците</translation>
     </message>
     <message>
         <source>Enable the client to act as a masternode (0-1, default: %u)</source>

@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
-// Copyright (c) 2014-2017 The Dash Core developers
+// Copyright (c) 2014-2018 The Dash Core developers
 // Copyright (c) 2018 The Sanity Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -644,7 +644,7 @@ std::string LicenseInfo()
     // todo: remove urls from translations on next change
     return FormatParagraph(_("Copyright (C) 2009-2014 The Bitcoin Core Developers")) + "\n" +
            "\n" +
-           FormatParagraph(_("Copyright (C) 2014-2017 The Dash Core Developers")) + "\n" +
+           FormatParagraph(_("Copyright (C) 2014-2018 The Dash Core Developers")) + "\n" +
            "\n" +
            FormatParagraph(strprintf(_("Copyright (C) 2017-%i The Sanity Core Developers"), COPYRIGHT_YEAR)) + "\n" +
            "\n" +

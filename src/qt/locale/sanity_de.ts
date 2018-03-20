@@ -2910,7 +2910,7 @@ https://www.transifex.com/projects/p/sanity/</translation>
     </message>
     <message>
         <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Die Transaktion wurde abgelehnt! 
+        <translation>Die Transaktion wurde abgelehnt!
 Dies kann passieren, wenn einige Sanity aus ihrer Wallet bereits ausgegeben wurden. Beispielsweise weil Sie eine Kopie ihrer wallet.dat nutzten und die Sanity dort ausgegeben haben. Diese Ausgaben sind in diesem Fall in der derzeit aktiven Wallet nicht vermerkt.</translation>
     </message>
     <message>
@@ -4144,12 +4144,16 @@ Dies kann passieren, wenn einige Sanity aus ihrer Wallet bereits ausgegeben wurd
         <translation>Mit KeePassHttp auf &lt;port&gt; verbinden (Standard: %u)</translation>
     </message>
     <message>
-        <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
-        <translation>Copyright (C) 2009-%i Die "Bitcoin Core"-Entwickler</translation>
+        <source>Copyright (C) 2009-2014 The Bitcoin Core Developers</source>
+        <translation>Copyright (C) 2009-2014 Die Bitcoin Core Entwickler</translation>
     </message>
     <message>
-        <source>Copyright (C) 2014-%i The Sanity Core Developers</source>
-        <translation>Copyright (C) 2014-%i Die "Sanity Core"-Entwickler</translation>
+        <source>Copyright (C) 2014-2018 The Dash Core Developers</source>
+        <translation>Copyright (C) 2014-2018 Die Dash Core Entwickler</translation>
+    </message>
+    <message>
+        <source>Copyright (C) 2017-%i The Sanity Core Developers</source>
+        <translation>Copyright (C) 2017-%i Die Sanity Core Entwickler</translation>
     </message>
     <message>
         <source>Enable the client to act as a masternode (0-1, default: %u)</source>
