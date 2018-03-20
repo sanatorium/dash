@@ -191,7 +191,8 @@ public:
 
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
         consensus.nPowTargetTimespan = 1 * 60 * 60; // MODMOD 1 h (was: 1 day)
-        consensus.nPowTargetSpacing = 5; ////2 * 60; // MODMOD 2 minutes
+        consensus.nPowTargetSpacing = 5 * 60; // MODMOD 2 minutes
+
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
@@ -199,8 +200,8 @@ public:
         consensus.nPowKGWHeight = 50; // MODMOD nPowKGWHeight >= nPowDGWHeight means "no KGW"
         consensus.nPowDGWHeight = 50; // MODMOD
 
-        consensus.nRuleChangeActivationThreshold = 684; //1916; // agreement 95% (of 2016) messured across  4 retargeting periods
-        consensus.nMinerConfirmationWindow = 720; //2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 684; // unused default value - was: 1916; // agreement 95% (of 2016) messured across  4 retargeting periods
+        consensus.nMinerConfirmationWindow = 720; // unused default value - was: 2016; // nPowTargetTimespan / nPowTargetSpacing
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
@@ -219,8 +220,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 3226; // 80% of 4032
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000006500074"); // MODMOD
-
+        consensus.nMinimumChainWork = uint256S("0x00"); // MODMOD consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000006500074"); // MODMOD
 
 
         /**
@@ -244,8 +244,6 @@ public:
 
 
         bool mineGenesis = false;
-        // GENGEN REMOVE //////////////////////////////////////////////////////////////////////////////////////////
-        consensus.nMinimumChainWork = uint256S("0x00");
 
         // GENGEN
         if (!mineGenesis) {
@@ -368,8 +366,8 @@ public:
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 4001; // nPowKGWHeight >= nPowDGWHeight means "no KGW"
         consensus.nPowDGWHeight = 4001;
-        consensus.nRuleChangeActivationThreshold = 1512; // 75 % for testchains
-        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 684; // unused default value - was: 1512; // 75 % for testchains
+        consensus.nMinerConfirmationWindow = 720; // unused default value - was: 2016; // nPowTargetTimespan / nPowTargetSpacing
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
