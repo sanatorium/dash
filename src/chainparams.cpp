@@ -71,8 +71,34 @@ Info.plist.in         <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLI
 qt/splashscreen.cpp   pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+20,copyrightTextSanity); // MODMOD
 qt/sanitystrings.cpp  QT_TRANSLATE_NOOP("sanity-core", "Copyright (C) 2017-%i The Sanity Core Developers"),
 
+/doc/masternode_conf.md [7603c20a05258c208b58b0a0d77603b9fc93d47cfa403035f87f3ce0af814566](https://test.explorer.sanity.org/tx/7603c20a05258c208b58b0a0d77603b9fc93d47cfa403035f87f3ce0af814566)
 
-org.sanity.Sanity
+hash.h                inline uint256 HashSanityX(const T1 pbegin, const T1 pend)
+
+fDIP0001ActiveAtTip = (VersionBitsState(pindexNew, Params().GetConsensus(), Consensus::DEPLOYMENT_DIP0001, versionbitscache) == THRESHOLD_ACTIVE);
+
+sanity.org -> sanity.mn
+test.explorer.sanity.mn
+https://www.sanity.org/downloads/ ->
+https://sanatorium.atlassian.net/wiki/display/DOC
+https://sanitytalk.org/
+http://webchat.freenode.net?channels=sanatorium
+#sanatorium
+https://www.sanity.org/forum/topic/official-announcements.54/
+https://launchpad.net/~sanity.org/+archive/ubuntu/sanity
+https://github.com/sanatorium/sanity/blob/master/doc/translation_process.md#syncing-with-transifex
+http://govman.sanity.org/index.php/Documentation_:_Status_Field
+git clone https://github.com/sanatorium/gitian.sigs.git
+git clone https://github.com/sanatorium/sanity-detached-sigs.git
+git clone https://github.com/devrandom/gitian-builder.git
+git clone https://github.com/sanatorium/sanity.git
+
+git clone https://github.com/sanatorium/sanity_hash
+http://githubredir.debian.net/github/sanatorium/sanity v(.*).tar.gz
+https://travis-ci.org/sanatorium/sanity.svg?branch=develop
+https://www.transifex.com/projects/p/sanity/
+https://www.sanity.org/forum/topic/sanity-worldwide-collaboration.88/
+org.sanity.Sanity   -> mn.sanity.Sanity
 
 consensus.nPowTargetTimespan = 24 * 60 * 60; // MODMOD 1 day
 consensus.nPowTargetSpacing = 2 * 60; // MODMOD 2 minutes
@@ -190,18 +216,17 @@ public:
         consensus.BIP34Hash = uint256S("0x0"); // MODMOD uint256S("0x000007d91d1254d60e2dd1ae580383070a4ddffa4c64c2eeb4a2f9ecc0414343");
 
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 1 * 60 * 60; // MODMOD 1 h (was: 1 day)
-        consensus.nPowTargetSpacing = 5 * 60; // MODMOD 2 minutes
-
+        consensus.nPowTargetSpacing = 5 * 60; // MODMOD 2 minutes per block
+        consensus.nPowTargetTimespan = 1 * 60 * 60; // MODMOD used only in DIFF-BTC (until nPowKGWHeight) and KGW (never) -> unused in DGW -> nTargetTimespan = nPastBlocks * params.nPowTargetSpacing; with nPastBlocks = 24; (ref: pow.cpp)
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
 
-        consensus.nPowKGWHeight = 50; // MODMOD nPowKGWHeight >= nPowDGWHeight means "no KGW"
-        consensus.nPowDGWHeight = 50; // MODMOD
+        consensus.nPowDGWHeight = 25; // MODMOD DGW from this blockheight, DIFF-BTC before
+        consensus.nPowKGWHeight = consensus.nPowDGWHeight; // MODMOD KGW disabled -> nPowKGWHeight >= nPowDGWHeight means "no KGW"
 
-        consensus.nRuleChangeActivationThreshold = 684; // unused default value - was: 1916; // agreement 95% (of 2016) messured across  4 retargeting periods
-        consensus.nMinerConfirmationWindow = 720; // unused default value - was: 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nRuleChangeActivationThreshold = 684; // unused default value for rule agreement - was: 1916; // agreement 95% (of 2016) messured across  4 retargeting periods
+        consensus.nMinerConfirmationWindow = 720; // unused default value for rule agreement - was: 2016; // nPowTargetTimespan / nPowTargetSpacing
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
@@ -219,9 +244,6 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nWindowSize = 4032;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 3226; // 80% of 4032
 
-        // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00"); // MODMOD consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000006500074"); // MODMOD
-
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -238,10 +260,17 @@ public:
 
         nDefaultPort = 9999; // MODMOD
 
-        nMaxTipAge = 5 * 60 * 60; // MODMOD 150 (was 144 in Dash) blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
+        // The best chain should have at least this much work.
+        // `GET /rest/chaininfo.json` -> * chainwork : (string) total amount of work in active chain, in hexadecimal
+        // "getblockheader \"hash\" ( verbose )\n" ->  \"chainwork\" : \"0000...1f3\"     (string) Expected number of hashes required to produce the current chain (in hex)\n"
+        consensus.nMinimumChainWork = uint256S("0x00"); // MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)) // consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000006500074"); // MODMOD
+
+        nMaxTipAge = 5 * 60 * 60; // MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->GetBlockTime() < (GetTime() - chainParams.MaxTipAge())) // 150 (was 144 in Dash) blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
+
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000; // MODMOD (was 10000 in Dash an Bitcoin) disable block pruning on blocks below a certain height
 
+        consensus.defaultAssumeValid = uint256S("0x0"); // validation.cpp: if (!hashAssumeValid.IsNull()) -> hash of block nr. x (assume valid until this block; 0x0 => Validating signatures for all blocks) // strUsage +=HelpMessageOpt("-assumevalid=<hex>", strprintf(_("If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)"), Params(CBaseChainParams::MAIN).GetConsensus().defaultAssumeValid.GetHex(), Params(CBaseChainParams::TESTNET).GetConsensus().defaultAssumeValid.GetHex()));
 
         bool mineGenesis = false;
 
@@ -272,7 +301,6 @@ public:
         assert(consensus.hashGenesisBlock == uint256S("0x00000f4ecd1e4516b7f1746dee37d211decfa64415a93680ccacfc62bb643542")); // 0xhash
         assert(genesis.hashMerkleRoot == uint256S("0x39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3")); // 0xhashMerkleRoot
 
-        consensus.defaultAssumeValid = uint256S("0x00"); // hash of block nr. x
 
         // MODMOD
         vFixedSeeds.clear();
