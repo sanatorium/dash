@@ -359,6 +359,7 @@ inline uint256 HashSanityX(const T1 pbegin, const T1 pend)
 
     static unsigned char pblank[1];
 
+    int worknumber =128;
     uint512 hash[13];
 
     sph_blake512_init(&ctx_blake);

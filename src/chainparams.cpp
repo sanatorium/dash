@@ -276,7 +276,7 @@ public:
 
         // GENGEN
         if (!mineGenesis) {
-          genesis = CreateGenesisBlock(1521548862,661039,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
+          genesis = CreateGenesisBlock(1521668603,142552,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
         } else {
           std::time_t unixTimeNow = std::time(nullptr);
           genesis = CreateGenesisBlock(unixTimeNow,0,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
@@ -287,18 +287,19 @@ public:
 
         /*
         MineGenesisBlock for: MAINNET
-        Converting genesis hash to string: CBlock(hash=00000f4ecd1e4516b7f1746dee37d211decfa64415a93680ccacfc62bb643542,
+        Converting genesis hash to string: CBlock(hash=00000825be971942ef5ec85e444db8ce8433313a08efb7227f329d75b5ae0fce,
         ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
         hashMerkleRoot=39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3,
-        nTime=1521548862, nBits=1e0ffff0, nNonce=661039, vtx=1)
+         nTime=1521668603, nBits=1e0ffff0, nNonce=142552, vtx=1)
           CTransaction(hash=39cacd5477, ver=1, vin.size=1, vout.size=1, nLockTime=0)
             CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
             CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
+
                     */
 
 
         // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x00000f4ecd1e4516b7f1746dee37d211decfa64415a93680ccacfc62bb643542")); // 0xhash
+        assert(consensus.hashGenesisBlock == uint256S("0x00000825be971942ef5ec85e444db8ce8433313a08efb7227f329d75b5ae0fce")); // 0xhash
         assert(genesis.hashMerkleRoot == uint256S("0x39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3")); // 0xhashMerkleRoot
 
 
@@ -432,31 +433,23 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000;
 
-        //genesis = CreateGenesisBlock(1520785864, 1, 0x1e0ffff0, 1, 50 * COIN);
-        //consensus.hashGenesisBlock = genesis.GetHash();
-        //printf("MINE TESTNET: %s\n",genesis.ToString().c_str());
-        //MineGenesisBlock("TESTNET", genesis); ///////////////////////////////////////////////////////////////////////////
-        /*
-        MineGenesisBlock for: TESTNET
-        HASH IS: 00000f10ab7fc615d34f4aee832fb56e47a4595d408c91e05fdf8d4b84f506ba
-        Converting genesis hash to string: CBlock(
-            hash=00000f10ab7fc615d34f4aee832fb56e47a4595d408c91e05fdf8d4b84f506ba,
-            ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
-            hashMerkleRoot=8e19ce5126fb2c10733d649b9b77cb17885d423d04ae918d4d462457019f32d1,
-            nTime=1520785864,
-            nBits=1e0ffff0,
-            nNonce=70006,
-            vtx=1)
-          CTransaction(hash=8e19ce5126, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-            CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
-            CTxOut(nValue=50.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
-        */
-        genesis = CreateGenesisBlock(1520785864,70006,0x1e0ffff0, 1, 50 * COIN); // nTime, nNonce, 0xnBits, ver
+
+        bool mineGenesisTestnet = false;
+
+        // GENGEN
+        if (!mineGenesisTestnet) {
+          genesis = CreateGenesisBlock(1521668603,142552,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
+        } else {
+          std::time_t unixTimeNow = std::time(nullptr);
+          genesis = CreateGenesisBlock(unixTimeNow,0,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
+          MineGenesisBlock("TESTNET", genesis); ///////////////////////////////////////////////////////////////////////////
+        }
+
         consensus.hashGenesisBlock = genesis.GetHash();
 
         // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x00000f10ab7fc615d34f4aee832fb56e47a4595d408c91e05fdf8d4b84f506ba")); // 0xhash
-        assert(genesis.hashMerkleRoot == uint256S("0x8e19ce5126fb2c10733d649b9b77cb17885d423d04ae918d4d462457019f32d1")); // 0xhashMerkleRoot
+        assert(consensus.hashGenesisBlock == uint256S("0x00000825be971942ef5ec85e444db8ce8433313a08efb7227f329d75b5ae0fce")); // 0xhash
+        assert(genesis.hashMerkleRoot == uint256S("0x39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3")); // 0xhashMerkleRoot
 
         //printf("GENESIS TESTNET: %s OK\n",genesis.ToString().c_str());
 
@@ -569,36 +562,36 @@ public:
         nDefaultPort = 19994; // MODMOD
         nPruneAfterHeight = 1000;
 
-        // GENGEN
-        //genesis = CreateGenesisBlock(1520785865, 1, 0x207fffff, 1, 50 * COIN);
-        //consensus.hashGenesisBlock = genesis.GetHash();
-        //printf("MINE REGTEST: %s\n",genesis.ToString().c_str());
-        //MineGenesisBlock("REGTEST", genesis); ///////////////////////////////////////////////////////////////////////////
-        /*
-        MineGenesisBlock for: REGTEST
-        HASH IS: 16ff5fe80896c1413ca784f98616dce1294018ea62002997ed46978f10e9af6f
-        Converting genesis hash to string: CBlock(
-            hash=16ff5fe80896c1413ca784f98616dce1294018ea62002997ed46978f10e9af6f,
-            ver=1,
-            hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
-            hashMerkleRoot=8e19ce5126fb2c10733d649b9b77cb17885d423d04ae918d4d462457019f32d1,
-            nTime=1520785865,
-            nBits=207fffff,
-            nNonce=1,
-            vtx=1)
-          CTransaction(hash=8e19ce5126, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-            CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
-            CTxOut(nValue=50.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
-        */
 
-        genesis = CreateGenesisBlock(1520785865,1,0x207fffff, 1, 50 * COIN); // nTime, nNonce, 0xnBits, ver
+        bool mineGenesisRegtest = false;
+
+        // GENGEN
+        if (!mineGenesisRegtest) {
+          genesis = CreateGenesisBlock(1521669285,6,0x207fffff,1,1*COIN); // nTime, nNonce, nBits, ver
+        } else {
+          std::time_t unixTimeNow = std::time(nullptr);
+          genesis = CreateGenesisBlock(unixTimeNow,0,0x207fffff,1,1*COIN); // nTime, nNonce, nBits, ver
+          MineGenesisBlock("REGTEST", genesis); ///////////////////////////////////////////////////////////////////////////
+        }
+
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x16ff5fe80896c1413ca784f98616dce1294018ea62002997ed46978f10e9af6f")); // 0xhash
-        assert(genesis.hashMerkleRoot == uint256S("0x8e19ce5126fb2c10733d649b9b77cb17885d423d04ae918d4d462457019f32d1")); // 00xhashMerkleRoot
+        /*
 
-        printf("GENESIS REGTEST: %s OK\n",genesis.ToString().c_str());
+        Converting genesis hash to string: CBlock(hash=0e165526f8b6fea20b19e2982a23481f3aa8bcde3c1a5e5d818f1857daacad69,
+        ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
+        hashMerkleRoot=39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3,
+         nTime=1521669285, nBits=207fffff, nNonce=6, vtx=1)
+          CTransaction(hash=39cacd5477, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+            CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295),
+            coinbase 04ffff001d0104443230313820303320313120426974636f696e206861732064696564203236332074696d65732046726f6d20426974636f696e4f62697475617269657320646f7420636f6d)
+            CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
+
+        */
+
+        // GENGEN
+        assert(consensus.hashGenesisBlock == uint256S("0x0e165526f8b6fea20b19e2982a23481f3aa8bcde3c1a5e5d818f1857daacad69")); // 0xhash
+        assert(genesis.hashMerkleRoot == uint256S("0x39cacd5477e89981840462effff704a73a9125cd2938661c34958d3ac54247e3")); // 00xhashMerkleRoot
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
