@@ -50,7 +50,7 @@ static const CAmount nHighTransactionFeeWarning = 10 * CENT; // MODMOD was: 0.01
 //! -fallbackfee default
 static const CAmount DEFAULT_FALLBACK_FEE = 1 * CENT; // MODMOD was: 1000;
 //! -mintxfee default
-static const CAmount DEFAULT_TRANSACTION_MINFEE = 1000;
+static const CAmount DEFAULT_TRANSACTION_MINFEE = 1 * CENT; // MODMOD was: 1000;
 //! -maxtxfee default
 static const CAmount DEFAULT_TRANSACTION_MAXFEE = 20 * CENT; // MODMOD was: 0.2 * COIN; // "smallest denom" + X * "denom tails"
 //! minimum change amount
@@ -96,7 +96,7 @@ enum AvailableCoinsType
     ALL_COINS,
     ONLY_DENOMINATED,
     ONLY_NONDENOMINATED,
-    ONLY_1000, // find masternode outputs including locked ones (use with caution)
+    ONLY_55555, // find masternode outputs including locked ones (use with caution)
     ONLY_PRIVATESEND_COLLATERAL
 };
 

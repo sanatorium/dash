@@ -35,7 +35,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
 
     // set reference point, paddings
     int paddingLeft             = 14;
-    int paddingTop              = 470;
+    int paddingTop              = 460;
     int titleVersionVSpace      = 17;
     int titleCopyrightVSpace    = 32;
 
@@ -44,9 +44,9 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     // define text to place
     QString titleText       = tr("Sanity Core");
     QString versionText     = QString(tr("Version %1")).arg(QString::fromStdString(FormatFullVersion()));
-    QString copyrightTextBtc   = QChar(0xA9)+QString(" 2009-2014 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core developers"));
-    QString copyrightTextDash  = QChar(0xA9)+QString(" 2014-2018 ").arg(COPYRIGHT_YEAR) + QString(tr("The Dash Core developers"));
-    QString copyrightTextSanity= QChar(0xA9)+QString(" 2017-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Sanity Core developers"));
+    QString copyrightTextBtc   = QChar(0xA9)+QString(" 2009-2014 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core Developers"));
+    QString copyrightTextDash  = QChar(0xA9)+QString(" 2014-2018 ").arg(COPYRIGHT_YEAR) + QString(tr("The Dash Core Developers"));
+    QString copyrightTextSanity= QChar(0xA9)+QString(" 2017-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Sanity Core Developers"));
     QString titleAddText    = networkStyle->getTitleAddText();
     // networkstyle.cpp can't (yet) read themes, so we do it here to get the correct Splash-screen
     QString splashScreenPath = ":/images/" + GUIUtil::getThemeName() + "/splash";
@@ -61,7 +61,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     pixmap = QPixmap(splashScreenPath);
 
     QPainter pixPaint(&pixmap);
-    pixPaint.setPen(QColor(100,100,100));
+    pixPaint.setPen(QColor(255,255,255));
 
     // check font size and drawing with
     pixPaint.setFont(QFont(font, 28*fontFactor));
@@ -82,9 +82,9 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
 
     // draw copyright stuff
     pixPaint.setFont(QFont(font, 10*fontFactor));
-    pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace,copyrightTextBtc);
-    pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+10,copyrightTextDash); // MODMOD
-    pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+20,copyrightTextSanity); // MODMOD
+    pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+2,copyrightTextBtc);
+    pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+14,copyrightTextDash); // MODMOD
+    pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+26,copyrightTextSanity); // MODMOD
 
     // draw additional text if special network
     if(!titleAddText.isEmpty()) {
@@ -141,7 +141,7 @@ static void InitMessage(SplashScreen *splash, const std::string &message)
         Qt::QueuedConnection,
         Q_ARG(QString, QString::fromStdString(message)),
         Q_ARG(int, Qt::AlignBottom|Qt::AlignHCenter),
-        Q_ARG(QColor, QColor(55,55,55)));
+        Q_ARG(QColor, QColor(255,255,255)));
 }
 
 static void ShowProgress(SplashScreen *splash, const std::string &title, int nProgress)

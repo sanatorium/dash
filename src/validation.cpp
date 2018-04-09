@@ -1240,24 +1240,29 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
     // supply after 10 years: 44.347.341
     // -> hardcap = 50.000.000, triggered after approx. 25 years
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
-        if (nHeight >= 411138) nSubsidyBase = 1; // the day(s) after
-        else if (nHeight >= 410417) nSubsidyBase = 1111; // last superday
-        else if (nHeight >= 367216) nSubsidyBase = 100;  // last 60 days before min reward
-        else if (nHeight >= 345615) nSubsidyBase = 1;
-        else if (nHeight >= 324014) nSubsidyBase = 6;
-        else if (nHeight >= 302413) nSubsidyBase = 12;
-        else if (nHeight >= 280812) nSubsidyBase = 25;
-        else if (nHeight >= 259211) nSubsidyBase = 50;
-        else if (nHeight >= 237610) nSubsidyBase = 100;
-        else if (nHeight >= 216009) nSubsidyBase = 200;
-        else if (nHeight >= 172808) nSubsidyBase = 150;
-        else if (nHeight >= 108007) nSubsidyBase = 100;
-        else if (nHeight >= 86406) nSubsidyBase = 50;
-        else if (nHeight >= 64805) nSubsidyBase = 25;
-        else if (nHeight >= 43204) nSubsidyBase = 12;
-        else if (nHeight >= 21603) nSubsidyBase = 6;
-        else if (nHeight >= 2) nSubsidyBase = 1; // slow start (30 days) for network adjustements and ANN
-        else if (nHeight == 1) nSubsidyBase = 3333333; // premine 3.3 mio
+        if      (nHeight >1051200) nSubsidyBase =   1; // the day(s) after (approx. 10 years)
+        else if (nHeight > 525800) nSubsidyBase =   2;
+        else if (nHeight > 490000) nSubsidyBase =  10; // after 2 years
+        else if (nHeight > 480000) nSubsidyBase = 555;
+        else if (nHeight > 440000) nSubsidyBase =  10;
+        else if (nHeight > 400000) nSubsidyBase =  20;
+        else if (nHeight > 360000) nSubsidyBase =  40;
+        else if (nHeight > 320000) nSubsidyBase =  60;
+        else if (nHeight > 280000) nSubsidyBase =  80;
+        else if (nHeight > 200000) nSubsidyBase = 100;
+        else if (nHeight > 180000) nSubsidyBase = 200;
+        else if (nHeight > 160000) nSubsidyBase = 400;
+        else if (nHeight > 140000) nSubsidyBase = 600;
+        else if (nHeight > 120000) nSubsidyBase = 400;
+        else if (nHeight > 100000) nSubsidyBase = 200;
+        else if (nHeight >  80000) nSubsidyBase = 150;
+        else if (nHeight >  60000) nSubsidyBase = 100;
+        else if (nHeight >  40000) nSubsidyBase = 100;
+        else if (nHeight >  30000) nSubsidyBase = 100;
+        else if (nHeight >  20000) nSubsidyBase = 100;
+        else if (nHeight >  10000) nSubsidyBase = 100;
+        else if (nHeight >      1) nSubsidyBase =   1; // slow start (30 days) for network adjustements and ANN
+        else if (nHeight == 1) nSubsidyBase = 5000000; // premine
 
         // 2 blocks a day (every 300 blocks = apprx. every 10 hours) get 100x nSubsidyBase
         if (nHeight % 300 == 0) nLuckyBlockFactor = 100;
@@ -1269,6 +1274,7 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
     return nSubsidy;
 }
 
+
 CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
     CAmount ret = blockValue;
@@ -1276,14 +1282,16 @@ CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
     //int nMNPIBlock = Params().GetConsensus().nMasternodePaymentsIncreaseBlock;
     //int nMNPIPeriod = Params().GetConsensus().nMasternodePaymentsIncreasePeriod;
 
-    if      (nHeight >= 237610) ret = blockValue * 0.80; // after 11 month 80 % of blockrewards to masternodes
-    else if (nHeight >= 172808) ret = blockValue * 0.70;
-    else if (nHeight >= 108007) ret = blockValue * 0.60;
-    else if (nHeight >=  86406) ret = blockValue * 0.30;
-    else if (nHeight >=  64805) ret = blockValue * 0.25;
-    else if (nHeight >=  43204) ret = blockValue * 0.20; // 60 days after genesis
-    else if (nHeight >=  21603) ret = blockValue * 0.10; // 30 days after genesis
-    else                        ret = blockValue * 0.05; // slow start masternode rewards
+    if      (nHeight > 140000) ret = blockValue * 0.90; // after 11 month 80 % of blockrewards to masternodes
+    else if (nHeight > 120000) ret = blockValue * 0.80;
+    else if (nHeight > 100000) ret = blockValue * 0.70;
+    else if (nHeight >  80000) ret = blockValue * 0.60;
+    else if (nHeight >  60000) ret = blockValue * 0.50;
+    else if (nHeight >  40000) ret = blockValue * 0.40;
+    else if (nHeight >  30000) ret = blockValue * 0.30;
+    else if (nHeight >  20000) ret = blockValue * 0.20; // 60 days after genesis
+    else if (nHeight >  10000) ret = blockValue * 0.10; // 30 days after genesis
+    else                       ret = blockValue * 0.05; // slow start masternode rewards
 
     return ret;
 }

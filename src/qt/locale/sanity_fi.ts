@@ -857,11 +857,11 @@
         <translation>Valitse yksityisyyden taso.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 1000 SANITY</source>
+        <source>Use 2 separate masternodes to mix funds up to 55555 SANITY</source>
         <translation>Käytä 2 erillistä masternodea sekoittaaksesi varoja</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 1000 SANITY</source>
+        <source>Use 8 separate masternodes to mix funds up to 55555 SANITY</source>
         <translation>Käytä 8 erillistä masternodea sekoittaaksesi varoja</translation>
     </message>
     <message>
@@ -869,16 +869,16 @@
         <translation>Käytä 16 erillistä masternodea</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 1000 SANITY</source>
-        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 SANITY kun anonymisoidaan 1000 SANITY</translation>
+        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 55555 SANITY</source>
+        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 SANITY kun anonymisoidaan 55555 SANITY</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 1000 SANITY</source>
-        <translation>Tämä vaihtoehto on keskinopea ja maksaa noin ~0.05 SANITY kun anonymisoidaan 1000 SANITY</translation>
+        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 55555 SANITY</source>
+        <translation>Tämä vaihtoehto on keskinopea ja maksaa noin ~0.05 SANITY kun anonymisoidaan 55555 SANITY</translation>
     </message>
     <message>
-        <source>0.1 SANITY per 1000 SANITY you anonymize.</source>
-        <translation>0.1 SANITY maksu per 1000 SANITY jonka anonymisoit.</translation>
+        <source>0.1 SANITY per 55555 SANITY you anonymize.</source>
+        <translation>0.1 SANITY maksu per 55555 SANITY jonka anonymisoit.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -4078,8 +4078,8 @@ Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/van
         <translation>Tämä ohjelma sisältää OpenSSL projektin OpenSSL työkalupakin &lt;https://www.openssl.org/&gt; sekä Eric Youngin kehittämän salausohjelmiston ja Thomas Bernardin kehittämän UPnP ohjelmiston.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 1000 SANITY.</source>
-        <translation>Ei tarpeeksi varoja tälle siirtotapahtumalle, joka ei ole 1000 SANITY.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 55555 SANITY.</source>
+        <translation>Ei tarpeeksi varoja tälle siirtotapahtumalle, joka ei ole 55555 SANITY.</translation>
     </message>
     <message>
         <source>Use hierarchical deterministic key generation (HD) after bip39/bip44. Only has effect during wallet creation/first start</source>
@@ -4683,8 +4683,8 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>Ei tarpeeksi PrivateSend sekoitettuja varoja tälle siirtotapahtumalle.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 1000 SANITY.</source>
-        <translation>Ei tarpeeksi PrivateSend ei-denominoituja varoja tälle siirtotapahtumalle, joka ei ole 1000 SANITY.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 55555 SANITY.</source>
+        <translation>Ei tarpeeksi PrivateSend ei-denominoituja varoja tälle siirtotapahtumalle, joka ei ole 55555 SANITY.</translation>
     </message>
     <message>
         <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>

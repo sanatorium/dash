@@ -833,28 +833,28 @@ Indirizzo: %4
         <translation>Selezionare il livello di privacy</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 1000 SANITY</source>
-        <translation>Usa 2 separati masternode per mischiare fino al 1000 SANITY</translation>
+        <source>Use 2 separate masternodes to mix funds up to 55555 SANITY</source>
+        <translation>Usa 2 separati masternode per mischiare fino al 55555 SANITY</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 1000 SANITY</source>
-        <translation>Usa 8 separati masternode per mischiare fino al 1000 SANITY</translation>
+        <source>Use 8 separate masternodes to mix funds up to 55555 SANITY</source>
+        <translation>Usa 8 separati masternode per mischiare fino al 55555 SANITY</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Usa 16 separati masternode</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 1000 SANITY</source>
-        <translation>Questa opzione è la più veloce e ti costerà ~0.025DRK circa per anonimizzare 1000DRK</translation>
+        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 55555 SANITY</source>
+        <translation>Questa opzione è la più veloce e ti costerà ~0.025DRK circa per anonimizzare 55555 SANITY</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 1000 SANITY</source>
-        <translation>Questa opzione è moderatamente veloce e costerà 0.05DRK circa per anonimizzare 1000DRK</translation>
+        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 55555 SANITY</source>
+        <translation>Questa opzione è moderatamente veloce e costerà 0.05DRK circa per anonimizzare 55555 SANITY</translation>
     </message>
     <message>
-        <source>0.1 SANITY per 1000 SANITY you anonymize.</source>
-        <translation>0.1DRK ogni 1000DRK anonimizzati.</translation>
+        <source>0.1 SANITY per 55555 SANITY you anonymize.</source>
+        <translation>0.1DRK ogni 55555 SANITY anonimizzati.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -1221,7 +1221,7 @@ Indirizzo: %4
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
 https://www.transifex.com/projects/p/sanity/</source>
-        <translation>La tua lingua manca o la traduzione è incompleta? Contribuisci alla traduzione qui: 
+        <translation>La tua lingua manca o la traduzione è incompleta? Contribuisci alla traduzione qui:
 https://www.transifex.com/projects/p/sanity/</translation>
     </message>
     <message>
@@ -3228,8 +3228,8 @@ Più URL vengono separati da una barra verticale |.</translation>
         <translation>Impossibile trovare fondi sufficienti Darksend denominati per questa transazione.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 1000 SANITY.</source>
-        <translation>Impossibile trovare un numero sufficiente di non denominati fondi Darksend per questa operazione che non sono uguali a 1000 SANITY.</translation>
+        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 55555 SANITY.</source>
+        <translation>Impossibile trovare un numero sufficiente di non denominati fondi Darksend per questa operazione che non sono uguali a 55555 SANITY.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
