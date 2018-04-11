@@ -857,28 +857,28 @@
         <translation>Пожалуйста, выберите уровень приватности.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 55555 SANITY</source>
-        <translation>Использовать 2 отдельные мастерноды для перемешивания до 55555 SANITY</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 SANITY</source>
+        <translation>Использовать 2 отдельные мастерноды для перемешивания до 10000 SANITY</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 55555 SANITY</source>
-        <translation>Использовать 8 отдельных мастернод для перемешивания до 55555 SANITY</translation>
+        <source>Use 8 separate masternodes to mix funds up to 10000 SANITY</source>
+        <translation>Использовать 8 отдельных мастернод для перемешивания до 10000 SANITY</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Использовать 16 отдельных мастернод</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 55555 SANITY</source>
-        <translation>Это самый быстрый вариант, анонимизация 55555 SANITY будет стоить вам примерно 0.025 SANITY</translation>
+        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 10000 SANITY</source>
+        <translation>Это самый быстрый вариант, анонимизация 10000 SANITY будет стоить вам примерно 0.025 SANITY</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 55555 SANITY</source>
-        <translation>Это относительно быстрый вариант, анонимизация 55555 SANITY будет стоить вам примерно 0.05 SANITY</translation>
+        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 10000 SANITY</source>
+        <translation>Это относительно быстрый вариант, анонимизация 10000 SANITY будет стоить вам примерно 0.05 SANITY</translation>
     </message>
     <message>
-        <source>0.1 SANITY per 55555 SANITY you anonymize.</source>
-        <translation>0.1 SANITY за каждые анонимизированные 55555 SANITY.</translation>
+        <source>0.1 SANITY per 10000 SANITY you anonymize.</source>
+        <translation>0.1 SANITY за каждые анонимизированные 10000 SANITY.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -4073,8 +4073,8 @@ https://www.transifex.com/projects/p/sanity/</translation>
         <translation>Этот продукт включает ПО, разработанное проектом OpenSSL Project для использования в OpenSSL Toolkit &lt;https://www.openssl.org/&gt;, криптографическое ПО, написанное Eric Young и ПО для работы с UPnP, написанное Thomas Bernard.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 55555 SANITY.</source>
-        <translation>Не удалось обнаружить достаточных для выполнения этой транзакции средств, отличающихся от 55555 SANITY.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 SANITY.</source>
+        <translation>Не удалось обнаружить достаточных для выполнения этой транзакции средств, отличающихся от 10000 SANITY.</translation>
     </message>
     <message>
         <source>Use hierarchical deterministic key generation (HD) after bip39/bip44. Only has effect during wallet creation/first start</source>
@@ -4677,8 +4677,8 @@ https://www.transifex.com/projects/p/sanity/</translation>
         <translation>Не удалось обнаружить достаточных для выполнения этой транзакции номиналов PrivateSend.</translation>
     </message>
     <message>
-        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 55555 SANITY.</source>
-        <translation>Не удалось обнаружить достаточных для выполнения этой транзакции неденоминированных средств, отличающихся от 55555 SANITY.</translation>
+        <source>Unable to locate enough PrivateSend non-denominated funds for this transaction that are not equal 10000 SANITY.</source>
+        <translation>Не удалось обнаружить достаточных для выполнения этой транзакции неденоминированных средств, отличающихся от 10000 SANITY.</translation>
     </message>
     <message>
         <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>

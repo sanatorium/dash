@@ -860,28 +860,28 @@ Endereço: %4
         <translation>Por favor seleccione um nível de privacidade.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 55555 SANITY</source>
-        <translation>Usar 2 masternodes distintos para misturar os fundos até 55555 SANITY</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 SANITY</source>
+        <translation>Usar 2 masternodes distintos para misturar os fundos até 10000 SANITY</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 55555 SANITY</source>
-        <translation>Usar 8 masternodes distintos para misturar os fundos até 55555 SANITY</translation>
+        <source>Use 8 separate masternodes to mix funds up to 10000 SANITY</source>
+        <translation>Usar 8 masternodes distintos para misturar os fundos até 10000 SANITY</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Usar 16 masternodes</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 55555 SANITY</source>
-        <translation>Esta opção é a mais rápida e irá custar cerca de ~0.025 SANITY para anonimizar 55555 SANITY</translation>
+        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 10000 SANITY</source>
+        <translation>Esta opção é a mais rápida e irá custar cerca de ~0.025 SANITY para anonimizar 10000 SANITY</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 55555 SANITY</source>
-        <translation>Esta opção é relativamente rápida e irá custar cerca de ~0.05 SANITY para anonimizar 55555 SANITY</translation>
+        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 10000 SANITY</source>
+        <translation>Esta opção é relativamente rápida e irá custar cerca de ~0.05 SANITY para anonimizar 10000 SANITY</translation>
     </message>
     <message>
-        <source>0.1 SANITY per 55555 SANITY you anonymize.</source>
-        <translation>0.1 SANITY por cada 55555 SANITY a anonimizar.</translation>
+        <source>0.1 SANITY per 10000 SANITY you anonymize.</source>
+        <translation>0.1 SANITY por cada 10000 SANITY a anonimizar.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -3374,8 +3374,8 @@ https://www.transifex.com/projects/p/sanity/</translation>
         <translation>Não foi possível localizar fundos Darksend denominados suficientes para esta transacção.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 55555 SANITY.</source>
-        <translation>Não foi possível localizar fundos Darksend não denominados suficientes para esta transacção que não sejam igual a 55555 SANITY.</translation>
+        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 10000 SANITY.</source>
+        <translation>Não foi possível localizar fundos Darksend não denominados suficientes para esta transacção que não sejam igual a 10000 SANITY.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -3638,8 +3638,8 @@ https://www.transifex.com/projects/p/sanity/</translation>
         <translation>Este produto inclui software desenvolvido pelo Projecto OpenSSL para uso no OpenSSL Toolkit &lt;https://www.openssl.org/&gt;, software criptográfico escrito por Eric Young e software UPnP escrito por Thomas Bernard.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 55555 SANITY.</source>
-        <translation>Não foi possível localizar fundos suficientes para esta transacção que não sejam igual a 55555 SANITY.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 10000 SANITY.</source>
+        <translation>Não foi possível localizar fundos suficientes para esta transacção que não sejam igual a 10000 SANITY.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>

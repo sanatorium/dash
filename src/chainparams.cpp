@@ -58,24 +58,27 @@ chainparamsseeds.h:   static SeedSpec6 pnSeed6_main[] = { // MODMOD
 masternode.cpp:       case MASTERNODE_WATCHDOG_EXPIRED:       return "ENABLED (NO WATCHDOG)";
 validation.h:         bool fEnforceBIP30 = (!pindex->phashBlock) || // Enforce on CreateNewBlock invocations which don't have a hash.
 miner.cpp_out         CAmount blockReward = nFees + GetBlockSubsidy(pindexPrev->nBits, pindexPrev->nHeight, Params().GetConsensus());
-masternode.cpp        if(coin.out.nValue != 55555 * COIN) { // MODMOD collateral (was: 1000)
-                      if(out.nValue == 55555 * COIN && out.scriptPubKey == payee) return true;
+masternode.cpp        if(coin.out.nValue != 10000 * COIN) { // MODMOD collateral (was: 1000)
+                      if(out.nValue == 10000 * COIN && out.scriptPubKey == payee) return true;
                       // if(fWatchdogExpired) { // MODMOD
 masternode.h          bool IsWatchdogExpired() { return false; } // MODMOD { return nActiveState == MASTERNODE_WATCHDOG_EXPIRED; }
-darksendconfig.cpp    configure(true, 55555, 2); // MODMOD (was: 1000)
-                      model->getOptionsModel()->getDisplayUnit(), 55555 * COIN)); // MODMOD (was: 1000)
-darksendconfig.ui     <string>Use 2 separate masternodes to mix funds up to 55555 SANITY</string>
-sanity_xx.ts          "transaction that are not equal 55555 SANITY.
-wallet.cpp            found = pcoin->vout[i].nValue == 55555*COIN; // MODMOD: (was 100)
+darksendconfig.cpp    configure(true, 10000, 2); // MODMOD (was: 1000)
+                      model->getOptionsModel()->getDisplayUnit(), 10000 * COIN)); // MODMOD (was: 1000)
+darksendconfig.ui     <string>Use 2 separate masternodes to mix funds up to 10000 SANITY</string>
+sanity_xx.ts          "transaction that are not equal 10000 SANITY.
+wallet.cpp            found = pcoin->vout[i].nValue == 10000*COIN; // MODMOD: (was 100)
 done                  ONLY_1000 -> ONLY_55555
+OptionsDialog.ui      10000, 1000, 100
+share/pixmaps/*
 
-governance-object.cpp strError = "Masternode UTXO should have 55555 SANITY, missing masternode=" + strOutpoint + "\n";
-todo: search 55555 SANITY
-todo: This option is the quickest and will cost about ~0.025 SANITY to anonymize 55555 SANITY
-todo: This option is moderately fast and will cost about 0.05 SANITY to anonymize 55555 SANITY
-todo: separate masternodes to mix funds up to 55555 SANITY
-todo: 0.1 SANITY per 55555 SANITY you anonymize.
-todo: static const int64_t SPORK_5_INSTANTSEND_MAX_VALUE_DEFAULT              = 1000;         // 55555 SANITY
+
+governance-object.cpp strError = "Masternode UTXO should have 10000 SANITY, missing masternode=" + strOutpoint + "\n";
+todo: search 10000 SANITY
+todo: This option is the quickest and will cost about ~0.025 SANITY to anonymize 10000 SANITY
+todo: This option is moderately fast and will cost about 0.05 SANITY to anonymize 10000 SANITY
+todo: separate masternodes to mix funds up to 10000 SANITY
+todo: 0.1 SANITY per 10000 SANITY you anonymize.
+todo: static const int64_t SPORK_5_INSTANTSEND_MAX_VALUE_DEFAULT              = 1000;         // 10000 SANITY
 
 clientversion.h:      #define CLIENT_VERSION_MAJOR 0
 clientversion.h:      #define CLIENT_VERSION_MINOR 12

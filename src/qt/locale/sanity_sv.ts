@@ -758,28 +758,28 @@ Adress: %4
         <translation>Vänligen välj en integritetsnivå.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 55555 SANITY</source>
-        <translation>Använd 2 enskilda masternoder för att mixa medel upp till 55555 SANITY</translation>
+        <source>Use 2 separate masternodes to mix funds up to 10000 SANITY</source>
+        <translation>Använd 2 enskilda masternoder för att mixa medel upp till 10000 SANITY</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 55555 SANITY</source>
-        <translation>Använd 8 enskilda masternoder för att mixa medel upp till 55555 SANITY.</translation>
+        <source>Use 8 separate masternodes to mix funds up to 10000 SANITY</source>
+        <translation>Använd 8 enskilda masternoder för att mixa medel upp till 10000 SANITY.</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Använd 16 enskilda masternoder</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 55555 SANITY</source>
-        <translation>Detta alternativ är det snabbaste och kommer att kosta omkring ~0,025 SANITY för att anonymisera 55555 SANITY</translation>
+        <source>This option is the quickest and will cost about ~0.025 SANITY to anonymize 10000 SANITY</source>
+        <translation>Detta alternativ är det snabbaste och kommer att kosta omkring ~0,025 SANITY för att anonymisera 10000 SANITY</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 55555 SANITY</source>
-        <translation>Detta alternativ är relativt snabbt och kommer att kosta omkring 0,05 SANITY för att anonymisera 55555 SANITY</translation>
+        <source>This option is moderately fast and will cost about 0.05 SANITY to anonymize 10000 SANITY</source>
+        <translation>Detta alternativ är relativt snabbt och kommer att kosta omkring 0,05 SANITY för att anonymisera 10000 SANITY</translation>
     </message>
     <message>
-        <source>0.1 SANITY per 55555 SANITY you anonymize.</source>
-        <translation>0,1 SANITY per 55555 SANITY du anonymiserar.</translation>
+        <source>0.1 SANITY per 10000 SANITY you anonymize.</source>
+        <translation>0,1 SANITY per 10000 SANITY du anonymiserar.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
@@ -2726,8 +2726,8 @@ https://www.transifex.com/projects/p/sanity/</translation>
         <translation>Kunde inte hitta tillräckliga Darksend-denominationsmedel för denna transaktion.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 55555 SANITY.</source>
-        <translation>Kunde inte hitta tillräckliga Darksend-icke-denominationsmedel för denna transaktion som inte är likvärdiga 55555 SANITY.</translation>
+        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 10000 SANITY.</source>
+        <translation>Kunde inte hitta tillräckliga Darksend-icke-denominationsmedel för denna transaktion som inte är likvärdiga 10000 SANITY.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>

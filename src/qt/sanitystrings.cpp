@@ -226,9 +226,9 @@ QT_TRANSLATE_NOOP("sanity-core", ""
 "Unable to locate enough PrivateSend denominated funds for this transaction."),
 QT_TRANSLATE_NOOP("sanity-core", ""
 "Unable to locate enough PrivateSend non-denominated funds for this "
-"transaction that are not equal 55555 SANITY."),
+"transaction that are not equal 10000 SANITY."),
 QT_TRANSLATE_NOOP("sanity-core", ""
-"Unable to locate enough funds for this transaction that are not equal 55555 "
+"Unable to locate enough funds for this transaction that are not equal 10000 "
 "SANITY."),
 QT_TRANSLATE_NOOP("sanity-core", ""
 "Unsupported argument -socks found. Setting SOCKS version isn't possible "
