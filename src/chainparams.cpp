@@ -24,118 +24,6 @@ void MineGenesisBlock(const char* infoS, CBlock &genesis);
 #include "uint256.h"
 #include "arith_uint256.h"
 
-/*
-cat mainnetpublickey.hex:: 049b1ee46b3d3b5bb75f99a8a6d6bb53d04a749a9af264a8215596c7847946f5a5335a46c20f66118296c2a2e3c43bb68a46ad60cc616250334365e3b9ac25a527
-cat testnetpublickey.hex:: 0423b0249b9987e91cebce4119a917f8380b972ad6263cbba25038e48d718dbae92804430e00f7113e8d5816701a846f75de219c31c1916004d481ea63046304b0
-cat mainnetsporkkey.hex::  0471215fbac076b1c0cedc690700c800ef38928b823513d8e4de9ca001b4b6bdaa25ac0baa55519e237aaa8b660b68418a13328d297a78d3f7176a7e1d558da70b
-cat testnetsporkkey.hex::  04e625bc76bb296a1aaddfbbe2313ccd3f4d71d44c09eda93352f49a73bcbf1f974ef40722bbaa2e89a9884b3a87d8cbebb7eae6fcf87f636b07e19335fdf182d5
-cat valertpublickey.hex::  040c3e84d2abb81ffc46f6f8982cdceed592763609f708ee6d42aecaaf82a2eac6e5677630d1732bd0c29f4a2f293620a82fee34fc490d1f900f008c3b0819cd7a
-*/
-
-/*
-// GENGEN
-CAmount blockReward = nFees + GetBlockSubsidy(pindex->pprev->nBits, pindex->pprev->nHeight, chainparams.GetConsensus());
-
-spork.h: spork defaults; reference: https://dash-docs.github.io/en/developer-reference#get-tx
-    10001 2 INSTANTSEND_ENABLED Turns on and off InstantSend network wide
-    10002 3 INSTANTSEND_BLOCK_FILTERING Turns on and off InstantSend block filtering
-    10004 5 INSTANTSEND_MAX_VALUE Controls the max value for an InstantSend transaction (currently 2000 dash)
-    10007 8 MASTERNODE_PAYMENT_ENFORCEMENT Requires masternodes to be paid by miners when blocks are processed
-    10008 9 SUPERBLOCKS_ENABLED Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
-    10009 10 MASTERNODE_PAY_UPDATED_NODES Only current protocol version masternode’s will be paid (not older nodes)
-    10011 12 RECONSIDER_BLOCKS Forces reindex of a specified number of blocks to recover from unintentional network forks
-    10012 13 OLD_SUPERBLOCK_FLAG Deprecated. No network function since block 614820
-    10013 14 REQUIRE_SENTINEL_FLAG Only masternode’s running sentinel will be paid
-
-amount.h:             static const CAmount MAX_MONEY = 100000000 * COIN; // MODMOD hardcap (was 21000000 in dash and bitcoin)
-governance-object.h   static const CAmount GOVERNANCE_PROPOSAL_FEE_TX = (5.0*COIN); // MODMOD min fee / 1000 = 0.005 coins = 0.5 CENT
-validation.h:         static const unsigned int DEFAULT_MIN_RELAY_TX_FEE = 1 * CENT; // MODMOD 1 CENT = 1000000 (was 1000 duffy in dash = 0.00001000 dash)
-wallet.h:             static const CAmount DEFAULT_FALLBACK_FEE = 1 * CENT; // MODMOD was: 1000;
-wallet.h:             static const CAmount nHighTransactionFeeWarning = 1 * CENT; // MODMOD was: 0.01 * COIN;
-wallet.h:             static const CAmount DEFAULT_TRANSACTION_MAXFEE = 20 * CENT; // MODMOD was: 0.2 * COIN; // "smallest denom" + X * "denom tails"
-validation.cpp:       CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly) { // MODMOD blockrewards
-chainparamsseeds.h:   static SeedSpec6 pnSeed6_main[] = { // MODMOD
-masternode.cpp:       case MASTERNODE_WATCHDOG_EXPIRED:       return "ENABLED (NO WATCHDOG)";
-validation.h:         bool fEnforceBIP30 = (!pindex->phashBlock) || // Enforce on CreateNewBlock invocations which don't have a hash.
-miner.cpp_out         CAmount blockReward = nFees + GetBlockSubsidy(pindexPrev->nBits, pindexPrev->nHeight, Params().GetConsensus());
-masternode.cpp        if(coin.out.nValue != 10000 * COIN) { // MODMOD collateral (was: 1000)
-                      if(out.nValue == 10000 * COIN && out.scriptPubKey == payee) return true;
-                      // if(fWatchdogExpired) { // MODMOD
-masternode.h          bool IsWatchdogExpired() { return false; } // MODMOD { return nActiveState == MASTERNODE_WATCHDOG_EXPIRED; }
-darksendconfig.cpp    configure(true, 10000, 2); // MODMOD (was: 1000)
-                      model->getOptionsModel()->getDisplayUnit(), 10000 * COIN)); // MODMOD (was: 1000)
-darksendconfig.ui     <string>Use 2 separate masternodes to mix funds up to 10000 SANITY</string>
-sanity_xx.ts          "transaction that are not equal 10000 SANITY.
-wallet.cpp            found = pcoin->vout[i].nValue == 10000*COIN; // MODMOD: (was 100)
-done                  ONLY_1000 -> ONLY_55555
-OptionsDialog.ui      10000, 1000, 100
-share/pixmaps/*
-
-
-governance-object.cpp strError = "Masternode UTXO should have 10000 SANITY, missing masternode=" + strOutpoint + "\n";
-todo: search 10000 SANITY
-todo: This option is the quickest and will cost about ~0.025 SANITY to anonymize 10000 SANITY
-todo: This option is moderately fast and will cost about 0.05 SANITY to anonymize 10000 SANITY
-todo: separate masternodes to mix funds up to 10000 SANITY
-todo: 0.1 SANITY per 10000 SANITY you anonymize.
-todo: static const int64_t SPORK_5_INSTANTSEND_MAX_VALUE_DEFAULT              = 1000;         // 10000 SANITY
-
-clientversion.h:      #define CLIENT_VERSION_MAJOR 0
-clientversion.h:      #define CLIENT_VERSION_MINOR 12
-clientversion.h:      #define CLIENT_VERSION_REVISION 2
-clientversion.h:      #define CLIENT_VERSION_BUILD 3
-clientversion.h:      #define COPYRIGHT_YEAR 2018
-clientversion.h:      #define COPYRIGHT_STR "2009-2014 The Bitcoin Core Developers, 2004-2017 The Dash Core Developers, 2017-" STRINGIZE(COPYRIGHT_YEAR) " The Sanity Core Developers"
-
-configure.ac          define(_CLIENT_VERSION_MAJOR, 1) // was: 0
-configure.ac          define(_COPYRIGHT_YEAR, 2018)
-init.cpp              FormatParagraph(strprintf(_("Copyright (C) 2017-%i The Sanity Core Developers"), COPYRIGHT_YEAR)) + "\n" +
-Info.plist.in         <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-2014 The Bitcoin Core developers, 2014-2018 The Dash Core developers, 2017-@COPYRIGHT_YEAR@ The Sanity Core developers</string>
-qt/splashscreen.cpp   pixPaint.drawText(paddingLeft,paddingTop+titleCopyrightVSpace+20,copyrightTextSanity); // MODMOD
-qt/sanitystrings.cpp  QT_TRANSLATE_NOOP("sanity-core", "Copyright (C) 2017-%i The Sanity Core Developers"),
-
-/doc/masternode_conf.md [7603c20a05258c208b58b0a0d77603b9fc93d47cfa403035f87f3ce0af814566](https://test.explorer.sanity.org/tx/7603c20a05258c208b58b0a0d77603b9fc93d47cfa403035f87f3ce0af814566)
-
-hash.h                inline uint256 HashSanityX(const T1 pbegin, const T1 pend)
-
-fDIP0001ActiveAtTip = (VersionBitsState(pindexNew, Params().GetConsensus(), Consensus::DEPLOYMENT_DIP0001, versionbitscache) == THRESHOLD_ACTIVE);
-
-const string strMessageMagic = "DarkCoin Signed Message:\n";
-
-sanity.org -> sanity.mn
-test.explorer.sanity.mn
-https://www.sanity.org/downloads/ ->
-https://sanatorium.atlassian.net/wiki/display/DOC
-https://sanitytalk.org/
-http://webchat.freenode.net?channels=sanatorium
-#sanatorium
-https://www.sanity.org/forum/topic/official-announcements.54/
-https://launchpad.net/~sanity.org/+archive/ubuntu/sanity
-https://github.com/sanatorium/sanity/blob/master/doc/translation_process.md#syncing-with-transifex
-http://govman.sanity.org/index.php/Documentation_:_Status_Field
-git clone https://github.com/sanatorium/gitian.sigs.git
-git clone https://github.com/sanatorium/sanity-detached-sigs.git
-git clone https://github.com/devrandom/gitian-builder.git
-git clone https://github.com/sanatorium/sanity.git
-
-git clone https://github.com/sanatorium/sanity_hash
-http://githubredir.debian.net/github/sanatorium/sanity v(.*).tar.gz
-https://travis-ci.org/sanatorium/sanity.svg?branch=develop
-https://www.transifex.com/projects/p/sanity/
-https://www.sanity.org/forum/topic/sanity-worldwide-collaboration.88/
-org.sanity.Sanity   -> mn.sanity.Sanity
-
-consensus.nPowTargetTimespan = 24 * 60 * 60; // MODMOD 1 day
-consensus.nPowTargetSpacing = 2 * 60; // MODMOD 2 minutes
--> 30 b/h; 720 b/24h; 5050 b/7d; 20160 b/28d; 262800 b/365d
-
-nDefaultPort = 9999;  // mainnet MODMOD was: 9_9_9-9
-nDefaultPort = 19999; // testnet MODMOD was: 1_9_9_9_9
-nDefaultPort = 19994; // regtest MODMOD was: 1_9_9_9_4
-rpcport = 9998
-
-<p>(.|\r?\n)*?</p>
-*/
 static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesisOutputScript, uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     CMutableTransaction txNew;
@@ -231,7 +119,7 @@ public:
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
 
-        consensus.nMasternodeMinimumConfirmations = 15;
+        consensus.nMasternodeMinimumConfirmations = 15; // Masternode input must have at least %d confirmations
 
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
