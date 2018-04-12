@@ -5,6 +5,17 @@ reset-files.bash
 
 *.tar.gz
 
+#ignore files and directories
+*_unused_*
+*unused*
+_TODO_.txt
+_DEVELOPMENT_.txt
+_README_.txt
+___*
+__*
+_*
+
+
 *.exe
 src/sanity
 src/sanityd
