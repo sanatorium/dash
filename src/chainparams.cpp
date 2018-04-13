@@ -178,7 +178,7 @@ public:
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000; // MODMOD (was 10000 in Dash an Bitcoin) disable block pruning on blocks below a certain height
 
-        consensus.defaultAssumeValid = uint256S("0x0"); // validation.cpp: if (!hashAssumeValid.IsNull()) -> hash of block nr. x (assume valid until this block; 0x0 => Validating signatures for all blocks) // strUsage +=HelpMessageOpt("-assumevalid=<hex>", strprintf(_("If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)"), //Params(CBaseChainParams::MAIN).GetConsensus().defaultAssumeValid.GetHex(), Params(CBaseChainParams::TESTNET).GetConsensus().defaultAssumeValid.GetHex()));
+        consensus.defaultAssumeValid = uint256S("0x0"); // IsNull==disabled;  validation.cpp: if (!hashAssumeValid.IsNull()) -> hash of block nr. x (assume valid until this block; 0x0 => Validating signatures for all blocks) // strUsage +=HelpMessageOpt("-assumevalid=<hex>", strprintf(_("If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)"), //Params(CBaseChainParams::MAIN).GetConsensus().defaultAssumeValid.GetHex(), Params(CBaseChainParams::TESTNET).GetConsensus().defaultAssumeValid.GetHex()));
 
         bool mineGenesis = false;
         /*
