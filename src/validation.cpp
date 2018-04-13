@@ -1261,8 +1261,8 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
         else if (nHeight >  30000) nSubsidyBase = 100;
         else if (nHeight >  20000) nSubsidyBase = 100;
         else if (nHeight >  10000) nSubsidyBase = 100;
-        else if (nHeight >      1) nSubsidyBase =   1; // slow start (30 days) for network adjustements and ANN
-        else if (nHeight == 1) nSubsidyBase = 5000000; // premine
+        else if (nHeight >    500) nSubsidyBase = 1; // slow start for network adjustements, production tests and ANN
+        else if (nHeight >=     1) nSubsidyBase = 10000; // premine 5000000 = 50 x 100000
 
         // 2 blocks a day (every 300 blocks = apprx. every 10 hours) get 100x nSubsidyBase
         if (nHeight % 300 == 0) nLuckyBlockFactor = 100;
