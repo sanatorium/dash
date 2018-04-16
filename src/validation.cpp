@@ -2873,6 +2873,12 @@ bool InvalidateBlock(CValidationState& state, const Consensus::Params& consensus
     setDirtyBlockIndex.insert(pindex);
     setBlockIndexCandidates.erase(pindex);
 
+    //dev commit d9dec30eba06d0007f1d3918a7f1677e82e35134
+    if (pindex == pindexBestHeader) {
+        pindexBestInvalid = pindexBestHeader;
+        pindexBestHeader = pindexBestHeader->pprev;
+    }
+
     while (chainActive.Contains(pindex)) {
         CBlockIndex *pindexWalk = chainActive.Tip();
         pindexWalk->nStatus |= BLOCK_FAILED_CHILD;
@@ -2883,6 +2889,11 @@ bool InvalidateBlock(CValidationState& state, const Consensus::Params& consensus
         if (!DisconnectTip(state, consensusParams)) {
             mempool.removeForReorg(pcoinsTip, chainActive.Tip()->nHeight + 1, STANDARD_LOCKTIME_VERIFY_FLAGS);
             return false;
+        }
+        //dev commit d9dec30eba06d0007f1d3918a7f1677e82e35134
+        if (pindexWalk == pindexBestHeader) {
+            pindexBestInvalid = pindexBestHeader;
+            pindexBestHeader = pindexBestHeader->pprev;
         }
     }
 
