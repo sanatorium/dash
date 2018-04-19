@@ -1,11 +1,11 @@
 ---
-name: "sanity-win-0.12"
+name: "sanity-win-1.12"
 enable_cache: true
 suites:
 - "trusty"
 architectures:
 - "amd64"
-packages: 
+packages:
 - "curl"
 - "g++"
 - "git-core"

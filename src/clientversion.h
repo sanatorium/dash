@@ -13,7 +13,6 @@
 /**
  * client versioning and copyright year
  */
-
 //! These need to be macros, as clientversion.cpp's and sanity*-res.rc's voodoo requires it
 #define CLIENT_VERSION_MAJOR 1 // MODMOD was: 0
 #define CLIENT_VERSION_MINOR 12

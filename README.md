@@ -1,4 +1,4 @@
-Sanity Core v2.0.0.0-80000
+Sanity Core v1.12.2.3-80000
 ==========================
 
 `master:` [![Build Status](https://travis-ci.org/sanatorium/sanity.svg?branch=master)](https://travis-ci.org/sanatorium/sanity) `develop:` [![Build Status](https://travis-ci.org/sanatorium/sanity.svg?branch=develop)](https://travis-ci.org/sanatorium/sanity/branches)
