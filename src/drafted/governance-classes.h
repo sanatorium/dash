@@ -117,7 +117,7 @@ private:
     int nLevel;
     std::string strCategory;
 
-    // Current OBJECT STATUS (see http://govman.sanity.org/index.php/Documentation_:_Status_Field)
+    // Current OBJECT STATUS (see http://govman.sanity.mn/index.php/Documentation_:_Status_Field)
     int nStatusID;
     std::string strStatusMessage;
 

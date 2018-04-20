@@ -3,7 +3,7 @@ Sanity Core v1.12.2.3-80000
 
 `master:` [![Build Status](https://travis-ci.org/sanatorium/sanity.svg?branch=master)](https://travis-ci.org/sanatorium/sanity) `develop:` [![Build Status](https://travis-ci.org/sanatorium/sanity.svg?branch=develop)](https://travis-ci.org/sanatorium/sanity/branches)
 
-https://www.sanity.org
+https://www.sanity.mn
 
 
 What is Sanity?
@@ -16,7 +16,7 @@ are carried out collectively by the network. Sanity Core is the name of the open
 source software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Sanity Core software, see https://www.sanity.org/get-sanity/.
+the Sanity Core software, see https://www.sanity.mn/get-sanity/.
 
 
 License
@@ -74,4 +74,4 @@ Translations are periodically pulled from Transifex and merged into the git repo
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
-Translators should also follow the [forum](https://www.sanity.org/forum/topic/sanity-worldwide-collaboration.88/).
+Translators should also follow the [forum](https://www.sanity.mn/forum/topic/sanity-worldwide-collaboration.88/).

@@ -1,7 +1,7 @@
 Sanity Core v1.12.2
 ===================
 
-This is the official reference wallet for Sanity digital currency and comprises the backbone of the Sanity peer-to-peer network. You can [download Sanity Core](https://www.sanity.org/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for Sanity digital currency and comprises the backbone of the Sanity peer-to-peer network. You can [download Sanity Core](https://www.sanity.mn/downloads/) or [build it yourself](#building) using the guides below.
 
 Running
 ---------------------

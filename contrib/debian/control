@@ -24,7 +24,7 @@ Build-Depends: debhelper,
  libprotobuf-dev, protobuf-compiler,
  python
 Standards-Version: 3.9.2
-Homepage: https://www.sanity.org/
+Homepage: https://www.sanity.mn/
 Vcs-Git: git://github.com/sanatorium/sanity.git
 Vcs-Browser: https://github.com/sanatorium/sanity
 

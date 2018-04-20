@@ -89,7 +89,7 @@ You can confirm that remote server is on the correct block by issuing
 
 ```sanity-cli getinfo```
 
-and comparing with the official explorer at https://explorer.sanity.org/chain/Sanity
+and comparing with the official explorer at https://explorer.sanity.mn/chain/Sanity
 
 ### Local
 

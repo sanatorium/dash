@@ -3,7 +3,7 @@ Sanity Core version 0.12.2.2
 
 Release is now available from:
 
-  <https://www.sanity.org/downloads/#wallets>
+  <https://www.sanity.mn/downloads/#wallets>
 
 This is a new minor version release, bringing various bugfixes and other
 improvements.
