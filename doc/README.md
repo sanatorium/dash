@@ -1,7 +1,7 @@
-Sanity Core v1.12.2
-===================
+Sanity Core v1.12.2.3
+=====================
 
-This is the official reference wallet for Sanity digital currency and comprises the backbone of the Sanity peer-to-peer network. You can [download Sanity Core](https://www.sanity.mn/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for Sanity digital currency and comprises the backbone of the Sanity peer-to-peer network. You can [download Sanity Core](https://www.sanity.mn) or [build it yourself](#building) using the guides below.
 
 Running
 ---------------------
@@ -22,12 +22,7 @@ Unpack the files into a directory, and then run sanity-qt.exe.
 
 Drag Sanity-Qt to your applications folder, and then run Sanity-Qt.
 
-### Need Help?
-
-* See the [Sanity documentation](https://sanatorium.atlassian.net/wiki/display/DOC)
-for help and more information.
-* Ask for help on [#sanatorium](http://webchat.freenode.net?channels=sanatorium) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=sanatorium).
-* Ask for help on the [SanityTalk](https://sanitytalk.org/) forums.
+### Building
 
 Building
 ---------------------
@@ -47,7 +42,6 @@ The Sanity Core repo's [root README](/README.md) contains relevant information o
 - [Multiwallet Qt Development](multiwallet-qt.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- Source Code Documentation ***TODO***
 - [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
 - [Unit Tests](unit-tests.md)
@@ -55,10 +49,6 @@ The Sanity Core repo's [root README](/README.md) contains relevant information o
 - [Shared Libraries](shared-libraries.md)
 - [BIPS](bips.md)
 - [Dnsseed Policy](dnsseed-policy.md)
-
-### Resources
-* Discuss on the [SanityTalk](https://sanitytalk.org/) forums, in the Development & Technical Discussion board.
-* Discuss on [#sanatorium](http://webchat.freenode.net/?channels=sanatorium) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=sanatorium).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

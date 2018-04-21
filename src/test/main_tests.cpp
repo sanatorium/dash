@@ -32,14 +32,6 @@ static void TestBlockSubsidyHalvings(const Consensus::Params& consensusParams)
     //BOOST_CHECK_EQUAL(GetBlockSubsidy(0, maxHalvings * consensusParams.nSubsidyHalvingInterval, consensusParams), 0);
 }
 
-static void TestBlockSubsidyHalvings(int nSubsidyHalvingInterval)
-{
-    // tested in sanity_tests.cpp
-    //Consensus::Params consensusParams;
-    //consensusParams.nSubsidyHalvingInterval = nSubsidyHalvingInterval;
-    //TestBlockSubsidyHalvings(consensusParams);
-}
-
 BOOST_AUTO_TEST_CASE(block_subsidy_test)
 {
     // tested in sanity_tests.cpp

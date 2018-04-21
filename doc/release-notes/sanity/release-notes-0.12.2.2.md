@@ -3,7 +3,7 @@ Sanity Core version 0.12.2.2
 
 Release is now available from:
 
-  <https://www.sanity.mn/downloads/#wallets>
+  <https://www.sanity.mn>
 
 This is a new minor version release, bringing various bugfixes and other
 improvements.
@@ -224,37 +224,3 @@ Thanks to everyone who directly contributed to this release:
 As well as Bitcoin Core Developers and everyone that submitted issues,
 reviewed pull requests or helped translating on
 [Transifex](https://www.transifex.com/projects/p/sanity/).
-
-
-Older releases
-==============
-
-Sanity was previously known as Darkcoin.
-
-Darkcoin tree 0.8.x was a fork of Litecoin tree 0.8, original name was XCoin
-which was first released on Jan/18/2014.
-
-Darkcoin tree 0.9.x was the open source implementation of masternodes based on
-the 0.8.x tree and was first released on Mar/13/2014.
-
-Darkcoin tree 0.10.x used to be the closed source implementation of Darksend
-which was released open source on Sep/25/2014.
-
-Sanity Core tree 0.11.x was a fork of Bitcoin Core tree 0.9,
-Darkcoin was rebranded to Sanity.
-
-Sanity Core tree 0.12.0.x was a fork of Bitcoin Core tree 0.10.
-
-Sanity Core tree 0.12.1.x was a fork of Bitcoin Core tree 0.12.
-
-These release are considered obsolete. Old release notes can be found here:
-
-- [v0.12.2](release-notes/sanity/release-notes-0.12.2.md) released Nov/08/2017
-- [v0.12.1](release-notes/sanity/release-notes-0.12.1.md) released ???/??/2016
-- [v0.12.0](release-notes/sanity/release-notes-0.12.0.md) released ???/??/2015
-- [v0.11.2](release-notes/sanity/release-notes-0.11.2.md) released Mar/25/2015
-- [v0.11.1](release-notes/sanity/release-notes-0.11.1.md) released Feb/10/2015
-- [v0.11.0](release-notes/sanity/release-notes-0.11.0.md) released Jan/15/2015
-- [v0.10.x](release-notes/sanity/release-notes-0.10.0.md) released Sep/25/2014
-- [v0.9.x](release-notes/sanity/release-notes-0.9.0.md) released Mar/13/2014
-

@@ -210,18 +210,6 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
 - Update sanity.mn
 
-- Announce the release:
-
-  - Release on Sanity forum: https://www.sanity.mn/forum/topic/official-announcements.54/
-
-  - Sanity-development mailing list
-
-  - Update title of #sanatorium on Freenode IRC
-
-  - Optionally reddit /r/Sanitypay, ... but this will usually sort out itself
-
-- Notify flare so that he can start building [the PPAs](https://launchpad.net/~sanity.mn/+archive/ubuntu/sanity)
+- Announce the release
 
 - Add release notes for the new version to the directory `doc/release-notes` in git master
-
-- Celebrate

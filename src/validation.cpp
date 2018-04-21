@@ -1261,8 +1261,9 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
         else if (nHeight >  30000) nSubsidyBase = 100;
         else if (nHeight >  20000) nSubsidyBase = 100;
         else if (nHeight >  10000) nSubsidyBase = 100;
-        else if (nHeight >    500) nSubsidyBase = 1; // slow start for network adjustements, production tests and ANN
-        else if (nHeight >=     1) nSubsidyBase = 10000; // premine 5000000 = 50 x 100000
+        else if (nHeight >   1000) nSubsidyBase = 1; // fair slow start for network adjustements, production tests, ANN and miner preparation
+        else if (nHeight >    500) nSubsidyBase = 10000; // premine 5000000 = 500 x 10000
+        //else if (nHeight >=     1) nSubsidyBase = 1;
 
         // 2 blocks a day (every 300 blocks = apprx. every 10 hours) get 100x nSubsidyBase
         if (nHeight % 300 == 0) nLuckyBlockFactor = 100;
@@ -1278,9 +1279,6 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
 CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
     CAmount ret = blockValue;
-
-    //int nMNPIBlock = Params().GetConsensus().nMasternodePaymentsIncreaseBlock;
-    //int nMNPIPeriod = Params().GetConsensus().nMasternodePaymentsIncreasePeriod;
 
     if      (nHeight > 140000) ret = blockValue * 0.90; // after 11 month 80 % of blockrewards to masternodes
     else if (nHeight > 120000) ret = blockValue * 0.80;
