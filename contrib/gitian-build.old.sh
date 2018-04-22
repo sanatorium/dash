@@ -40,15 +40,15 @@ version		Version number, commit, or branch to build. If building a commit or bra
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
 -u|--url	Specify the URL of the repository. Default is https://github.com/sanatorium/sanity
--v|--verify 	Verify the Gitian build
--b|--build	Do a Gitian build
+-v|--verify 	Verify the gitian build
+-b|--build	Do a gitiain build
 -s|--sign	Make signed binaries for Windows and Mac OSX
 -B|--buildsign	Build both signed and unsigned binaries
 -o|--os		Specify which Operating Systems the build is for. Default is lwx. l for linux, w for windows, x for osx
 -j		Number of processes to use. Default 2
 -m		Memory to allocate in MiB. Default 2000
 --kvm           Use KVM instead of LXC
---setup         Set up the Gitian building environment. Uses KVM. If you want to use lxc, use the --lxc option. Only works on Debian-based systems (Ubuntu, Debian)
+--setup         Setup the gitian building environment. Uses KVM. If you want to use lxc, use the --lxc option. Only works on Debian-based systems (Ubuntu, Debian)
 --detach-sign   Create the assert file for detached signing. Will not commit anything.
 --no-commit     Do not commit anything to git
 -h|--help	Print this help message
@@ -179,6 +179,8 @@ done
 if [[ $lxc = true ]]
 then
     export USE_LXC=1
+    export LXC_BRIDGE=lxcbr0
+    sudo ifconfig lxcbr0 up 10.0.2.2
 fi
 
 # Check for OSX SDK
@@ -230,8 +232,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/sanatorium/gitian.sigs.git
-    git clone https://github.com/sanatorium/sanity-detached-sigs.git
+    #git clone https://github.com/bitcoin-core/gitian.sigs.git
+    #git clone https://github.com/bitcoin-core/bitcoin-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -254,7 +256,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./sanity/${VERSION}
+	mkdir -p ./sanity-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -269,7 +271,7 @@ then
 	# Linux
 	if [[ $linux = true ]]
 	then
-            echo ""
+        echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit sanity=${COMMIT} --url sanity=${url} ../sanity/contrib/gitian-descriptors/gitian-linux.yml
@@ -351,7 +353,7 @@ fi
 if [[ $sign = true ]]
 then
 
-        pushd ./gitian-builder
+    pushd ./gitian-builder
 	# Sign Windows
 	if [[ $windows = true ]]
 	then
