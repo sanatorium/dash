@@ -1235,14 +1235,10 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
     CAmount nLuckyBlockFactor = 1;
     int nHeight = nPrevHeight + 1;
 
-    // supply at block 411137: 31.954.053 (base rewards) + 9.444.837 (lucky block rewards) = 41.398.890
-    // supply after block 411137: increasing by 262.800 (base) + 86.724 (lucky) = 349.524 coins every year
-    // supply after 10 years: 44.347.341
-    // -> hardcap = 50.000.000, triggered after approx. 25 years
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
-        if      (nHeight >1051200) nSubsidyBase =   1; // the day(s) after (approx. 10 years)
+        if      (nHeight >1051200) nSubsidyBase =   1;
         else if (nHeight > 525800) nSubsidyBase =   2;
-        else if (nHeight > 490000) nSubsidyBase =  10; // after 2 years
+        else if (nHeight > 490000) nSubsidyBase =  10;
         else if (nHeight > 480000) nSubsidyBase = 555;
         else if (nHeight > 440000) nSubsidyBase =  10;
         else if (nHeight > 400000) nSubsidyBase =  20;

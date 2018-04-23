@@ -86,12 +86,12 @@ public:
         strNetworkID = "main";
         consensus.nInstantSendKeepLock = 24;
 
-        consensus.nBudgetPaymentsStartBlock = 50 * 262800; // MODMOD 50y -> disabled
+        consensus.nBudgetPaymentsStartBlock = 4070908800; // MODMOD 01/01/2099 -> disabled
         consensus.nBudgetPaymentsCycleBlocks = 21900; // MODMOD actual number of blocks per month is 262800 / 12
         consensus.nBudgetPaymentsWindowBlocks = 100;
         consensus.nBudgetProposalEstablishingTime = 60*60*24;
 
-        consensus.nSuperblockStartBlock = 50 * 262800; // MODMOD 50y -> disabled; The block at which 12.1 goes live (end of final 12.0 budget cycle)
+        consensus.nSuperblockStartBlock = 4070908800; // MODMOD 01/01/2099 -> disabled; The block at which 12.1 goes live (end of final 12.0 budget cycle)
         consensus.nSuperblockCycle = 21900; // MODMOD actual number of blocks per month is 262800 / 12
 
         consensus.nGovernanceMinQuorum = 10;
@@ -297,12 +297,12 @@ public:
         strNetworkID = "test";
         consensus.nInstantSendKeepLock = 6;
 
-        consensus.nBudgetPaymentsStartBlock = 50 * 262800; // MODMOD 50y -> disabled
+        consensus.nBudgetPaymentsStartBlock = 4070908800; // MODMOD 01/01/2099 -> disabled
         consensus.nBudgetPaymentsCycleBlocks = 21900; // MODMOD actual number of blocks per month is 262800 / 12
         consensus.nBudgetPaymentsWindowBlocks = 10;
         consensus.nBudgetProposalEstablishingTime = 60*20;
 
-        consensus.nSuperblockStartBlock = 50 * 262800; // MODMOD 50y -> disabled; The block at which 12.1 goes live (end of final 12.0 budget cycle)
+        consensus.nSuperblockStartBlock = 4070908800; // MODMOD 01/01/2099 -> disabled; The block at which 12.1 goes live (end of final 12.0 budget cycle)
         consensus.nSuperblockCycle = 21900; // MODMOD actual number of blocks per month is 262800 / 12
 
         consensus.nGovernanceMinQuorum = 1;
@@ -442,12 +442,12 @@ public:
         strNetworkID = "regtest";
         consensus.nInstantSendKeepLock = 6;
 
-        consensus.nBudgetPaymentsStartBlock = 50 * 262800; // MODMOD 50y -> disabled
+        consensus.nBudgetPaymentsStartBlock = 4070908800; // MODMOD 01/01/2099 -> disabled
         consensus.nBudgetPaymentsCycleBlocks = 21900; // MODMOD actual number of blocks per month is 262800 / 12
         consensus.nBudgetPaymentsWindowBlocks = 10;
         consensus.nBudgetProposalEstablishingTime = 60*20;
 
-        consensus.nSuperblockStartBlock = 50 * 262800; // MODMOD 50y -> disabled; The block at which 12.1 goes live (end of final 12.0 budget cycle)
+        consensus.nSuperblockStartBlock = 4070908800; // MODMOD 01/01/2099 -> disabled; The block at which 12.1 goes live (end of final 12.0 budget cycle)
         consensus.nSuperblockCycle = 21900; // MODMOD actual number of blocks per month is 262800 / 12
 
         consensus.nGovernanceMinQuorum = 1;
