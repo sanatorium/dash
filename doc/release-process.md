@@ -1,7 +1,6 @@
 Release Process
 ====================
 
-* Update translations, see [translation_process.md](https://github.com/sanatorium/sanity/blob/master/doc/translation_process.md#syncing-with-transifex)
 * Update hardcoded [seeds](/contrib/seeds)
 
 Before every minor and major release:
