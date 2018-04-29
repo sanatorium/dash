@@ -199,7 +199,7 @@ public:
           //////////////////////////////////////////////////
           // sanity-cli getblock (blockhash) -> chainwork //
           //////////////////////////////////////////////////
-          consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000034d37047"); // MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
+          consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000000013a12e97d"); // MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
 
           genesis = CreateGenesisBlock(1524924154,1568515,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
         } else {
@@ -267,16 +267,16 @@ public:
             (    0, consensus.hashGenesisBlock)
             // 2018-04-08 12:09:27 UpdateTip: new best=000004b353cc8ae44d28dc61992be07c73fd7bba70a73af99a5926a884e7c284  height=1629  log2_work=32.549578  tx=1640  date=2018-04-08 12:09:05 progress=0.999845  cache=0.0MiB(34txo)
             (   88, uint256S("0x0000050a961b03446e6d75ab5a65821f652f7cd4c8afa78e68e3a6da48378aaa"))
-            // 2018-04-28 20:42:21 UpdateTip: new best=00000055ddea3d432373619ecef10fc2ca37425ca8f405e168885c5c2479c3d9  height=200  log2_work=29.723174  tx=204  date=2018-04-28 20:42:21 progress=1.000000  cache=0.0MiB(113txo)
-            (  200, uint256S("0x00000055ddea3d432373619ecef10fc2ca37425ca8f405e168885c5c2479c3d9"))
+            // 2018-04-29 16:44:14 UpdateTip: new best=0000018b904a7cb61deeba532527ee3a736f62f4e6714db263b7e2c35777757d  height=777  log2_work=32.29496  tx=781  date=2018-04-29 16:44:14 progress=1.000000  cache=0.1MiB(690txo)
+            (  777, uint256S("0x0000018b904a7cb61deeba532527ee3a736f62f4e6714db263b7e2c35777757d"))
 
             ////////////////////////////////////////////////////////
             // last block -> in debug.log -> new best=(blockhash) //
             ////////////////////////////////////////////////////////
             ,
             // debug.log: 2018-04-28 17:04:51 UpdateTip: new best=0000050a961b03446e6d75ab5a65821f652f7cd4c8afa78e68e3a6da48378aaa  height=88  log2_work=27.455713  tx=89  date=2018-04-28 17:04:49 progress=0.999740  cache=0.0MiB(88txo)
-            1524948141, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com -> 1523189345
-            204,        // was: 0, // * total number of transactions between genesis and last checkpoint
+            1525020254, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com -> 1523189345
+            781,        // was: 0, // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the "UpdateTip" debug.log lines)
             1000        // * estimated number of transactions per day after checkpoint
         };
