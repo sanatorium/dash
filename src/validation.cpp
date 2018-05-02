@@ -1238,30 +1238,30 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
     if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
         if      (nHeight >1051200) nSubsidyBase =   1;
         else if (nHeight > 525800) nSubsidyBase =   2;
-        else if (nHeight > 490000) nSubsidyBase =  10;
-        else if (nHeight > 480000) nSubsidyBase = 555;
-        else if (nHeight > 440000) nSubsidyBase =  10;
-        else if (nHeight > 400000) nSubsidyBase =  20;
-        else if (nHeight > 360000) nSubsidyBase =  40;
-        else if (nHeight > 320000) nSubsidyBase =  60;
-        else if (nHeight > 280000) nSubsidyBase =  80;
-        else if (nHeight > 200000) nSubsidyBase = 100;
-        else if (nHeight > 180000) nSubsidyBase = 200;
-        else if (nHeight > 160000) nSubsidyBase = 400;
-        else if (nHeight > 140000) nSubsidyBase = 600;
-        else if (nHeight > 120000) nSubsidyBase = 400;
-        else if (nHeight > 100000) nSubsidyBase = 200;
-        else if (nHeight >  80000) nSubsidyBase = 150;
-        else if (nHeight >  60000) nSubsidyBase = 100;
+        else if (nHeight > 500000) nSubsidyBase =  10;
+        else if (nHeight > 490000) nSubsidyBase = 555;
+        else if (nHeight > 450000) nSubsidyBase =  10;
+        else if (nHeight > 410000) nSubsidyBase =  20;
+        else if (nHeight > 370000) nSubsidyBase =  40;
+        else if (nHeight > 330000) nSubsidyBase =  60;
+        else if (nHeight > 290000) nSubsidyBase =  80;
+        else if (nHeight > 210000) nSubsidyBase = 100;
+        else if (nHeight > 190000) nSubsidyBase = 200;
+        else if (nHeight > 170000) nSubsidyBase = 400;
+        else if (nHeight > 150000) nSubsidyBase = 600;
+        else if (nHeight > 130000) nSubsidyBase = 400;
+        else if (nHeight > 110000) nSubsidyBase = 200;
+        else if (nHeight >  90000) nSubsidyBase = 150;
+        else if (nHeight >  70000) nSubsidyBase = 100;
+        else if (nHeight >  50000) nSubsidyBase = 100;
         else if (nHeight >  40000) nSubsidyBase = 100;
         else if (nHeight >  30000) nSubsidyBase = 100;
-        else if (nHeight >  20000) nSubsidyBase = 100;
-        else if (nHeight >  10000) nSubsidyBase = 100;
-        else if (nHeight >   1000) nSubsidyBase = 1; // fair slow start for network adjustements, production tests, ANN and miner preparation
-        else if (nHeight >    500) nSubsidyBase = 10000; // premine 5000000 = 500 x 10000
+        else if (nHeight >  20000) nSubsidyBase = 100;   // start rewarding
+        else if (nHeight >   1000) nSubsidyBase = 1;     // slow start for network adjustements, production tests, ANN and miner preparation
+        else if (nHeight >    500) nSubsidyBase = 10001; // premine 5000500 = 500 x 10001 + luckyblockrewards
         //else if (nHeight >=     1) nSubsidyBase = 1;
 
-        // 2 blocks a day (every 300 blocks = apprx. every 10 hours) get 100x nSubsidyBase
+        // 2 blocks a day (every 300 blocks = apprx. every 10 hours) blockreward = 100 x nSubsidyBase
         if (nHeight % 300 == 0) nLuckyBlockFactor = 100;
     }
 
@@ -1276,7 +1276,7 @@ CAmount GetMasternodePayment(int nHeight, CAmount blockValue)
 {
     CAmount ret = blockValue;
 
-    if      (nHeight > 140000) ret = blockValue * 0.90; // after 11 month 80 % of blockrewards to masternodes
+    if      (nHeight > 140000) ret = blockValue * 0.90; // 90 % of minded blockrewards to masternodes
     else if (nHeight > 120000) ret = blockValue * 0.80;
     else if (nHeight > 100000) ret = blockValue * 0.70;
     else if (nHeight >  80000) ret = blockValue * 0.60;

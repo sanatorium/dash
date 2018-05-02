@@ -49,7 +49,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  // cannot be spent since it did not originally exist in the database.
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {   // GENGEN
-    const char* pszTimestamp = "20180420 BE64D3E018044C66F1FF34704BAF85BF0EB65C5BFA6892D32159BA699768E569";
+    const char* pszTimestamp = "20180501 BE64D3E018044C66F1FF34704BAF85BF0EB65C5BFA6892D32159BA699768E569";
     // GENGEN mainnetpublickey
     const CScript genesisOutputScript = CScript() << ParseHex("049b1ee46b3d3b5bb75f99a8a6d6bb53d04a749a9af264a8215596c7847946f5a5335a46c20f66118296c2a2e3c43bb68a46ad60cc616250334365e3b9ac25a527") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
@@ -159,35 +159,37 @@ public:
 
         /*
         MineGenesisBlock for: MAINNET
-        Converting genesis hash to string:
-        CBlock(hash=00000cfcf0609b2aa9827284a8927e92bec0f4fa5a530c7f0c42e5ffd9fd7a55,
-        ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
-        hashMerkleRoot=2e15172a784b3dd5c262dbff3e300de2162af4facc7ea669fef6dc438762b393,
-        nTime=1524924154, nBits=1e0ffff0, nNonce=1568515, vtx=1)
-        CTransaction(hash=2e15172a78, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044932303138303432302042453634443345303138303434433636463146463334373034424146383542463045423635433542464136383932443332313539424136393937363845353639)
+        Converting genesis hash to string: CBlock(
+        hash=00000a609bb4527e1e35162d7a08b3a47df9ae1a479fcd0adf87675936896b60, ver=1,
+        hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
+        hashMerkleRoot=32b2d01824250c881149c2bbdb12def0efdc80e3685dabd4073a51c966eed30f,
+        nTime=1525206118, nBits=1e0ffff0, nNonce=826478, vtx=1)
+        CTransaction(hash=32b2d01824, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044932303138303530312042453634443345303138303434433636463146463334373034424146383542463045423635433542464136383932443332313539424136393937363845353639)
         CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
+
+
 
         MineGenesisBlock for: TESTNET
-        Converting genesis hash to string:
-        CBlock(hash=000001ab0c0b8ab732600a6f59ac3df8af64b3ed4946bce70626ed131c1262a4,
-        ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
-        hashMerkleRoot=2e15172a784b3dd5c262dbff3e300de2162af4facc7ea669fef6dc438762b393,
-        nTime=1524924490, nBits=1e0ffff0, nNonce=1180416, vtx=1)
-        CTransaction(hash=2e15172a78, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044932303138303432302042453634443345303138303434433636463146463334373034424146383542463045423635433542464136383932443332313539424136393937363845353639)
+        Converting genesis hash to string: CBlock(
+        hash=0000096b17ca35b6884cd9269dbacc60b9ab5aa15995b5b8678e6b8a58ba85ca, ver=1,
+        hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
+        hashMerkleRoot=32b2d01824250c881149c2bbdb12def0efdc80e3685dabd4073a51c966eed30f,
+        nTime=1525206167, nBits=1e0ffff0, nNonce=1079926, vtx=1)
+        CTransaction(hash=32b2d01824, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044932303138303530312042453634443345303138303434433636463146463334373034424146383542463045423635433542464136383932443332313539424136393937363845353639)
         CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
+
 
         MineGenesisBlock for: REGTEST
-        Converting genesis hash to string:
-        CBlock(hash=6cb04e513b1a35d58e839487bb18769409c876adb04a5c1a64f5c7f5dbad33b6,
-        ver=1, hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
-        hashMerkleRoot=2e15172a784b3dd5c262dbff3e300de2162af4facc7ea669fef6dc438762b393,
-        nTime=1524924744, nBits=207fffff, nNonce=0, vtx=1)
-        CTransaction(hash=2e15172a78, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-        CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044932303138303432302042453634443345303138303434433636463146463334373034424146383542463045423635433542464136383932443332313539424136393937363845353639)
+        Converting genesis hash to string: CBlock(
+        hash=04d66f13ac867cd69dbf21a1e1fc37337c22698d7604e020ce98630de385c03d, ver=1,
+        hashPrevBlock=0000000000000000000000000000000000000000000000000000000000000000,
+        hashMerkleRoot=32b2d01824250c881149c2bbdb12def0efdc80e3685dabd4073a51c966eed30f,
+        nTime=1525206232, nBits=207fffff, nNonce=0, vtx=1)
+        CTransaction(hash=32b2d01824, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+        CTxIn(COutPoint(0000000000000000000000000000000000000000000000000000000000000000, 4294967295), coinbase 04ffff001d01044932303138303530312042453634443345303138303434433636463146463334373034424146383542463045423635433542464136383932443332313539424136393937363845353639)
         CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
-
         */
 
         bool mineGenesis = false;
@@ -199,9 +201,10 @@ public:
           //////////////////////////////////////////////////
           // sanity-cli getblock (blockhash) -> chainwork //
           //////////////////////////////////////////////////
-          consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000000013a12e97d"); // MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+          consensus.nMinimumChainWork = uint256S("0x0"); // was: 0x0 MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
 
-          genesis = CreateGenesisBlock(1524924154,1568515,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
+          genesis = CreateGenesisBlock(1525206118,826478,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
         } else {
           std::time_t unixTimeNow = std::time(nullptr);
           consensus.nMinimumChainWork = uint256S("0x00"); // MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)) // consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000006500074"); // MODMOD
@@ -221,8 +224,8 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x00000cfcf0609b2aa9827284a8927e92bec0f4fa5a530c7f0c42e5ffd9fd7a55")); // 0xhash
-        assert(genesis.hashMerkleRoot == uint256S("0x2e15172a784b3dd5c262dbff3e300de2162af4facc7ea669fef6dc438762b393")); // 0xhashMerkleRoot
+        assert(consensus.hashGenesisBlock == uint256S("0x00000a609bb4527e1e35162d7a08b3a47df9ae1a479fcd0adf87675936896b60")); // 0xhash
+        assert(genesis.hashMerkleRoot == uint256S("0x32b2d01824250c881149c2bbdb12def0efdc80e3685dabd4073a51c966eed30f")); // 0xhashMerkleRoot
 
         // MODMOD
         vFixedSeeds.clear();
@@ -265,18 +268,18 @@ public:
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             (    0, consensus.hashGenesisBlock)
-            // 2018-04-08 12:09:27 UpdateTip: new best=000004b353cc8ae44d28dc61992be07c73fd7bba70a73af99a5926a884e7c284  height=1629  log2_work=32.549578  tx=1640  date=2018-04-08 12:09:05 progress=0.999845  cache=0.0MiB(34txo)
-            (   88, uint256S("0x0000050a961b03446e6d75ab5a65821f652f7cd4c8afa78e68e3a6da48378aaa"))
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //(   88, uint256S("0x0000050a961b03446e6d75ab5a65821f652f7cd4c8afa78e68e3a6da48378aaa"))
             // 2018-04-29 16:44:14 UpdateTip: new best=0000018b904a7cb61deeba532527ee3a736f62f4e6714db263b7e2c35777757d  height=777  log2_work=32.29496  tx=781  date=2018-04-29 16:44:14 progress=1.000000  cache=0.1MiB(690txo)
-            (  777, uint256S("0x0000018b904a7cb61deeba532527ee3a736f62f4e6714db263b7e2c35777757d"))
+            //(  777, uint256S("0x0000018b904a7cb61deeba532527ee3a736f62f4e6714db263b7e2c35777757d"))
 
             ////////////////////////////////////////////////////////
             // last block -> in debug.log -> new best=(blockhash) //
             ////////////////////////////////////////////////////////
             ,
             // debug.log: 2018-04-28 17:04:51 UpdateTip: new best=0000050a961b03446e6d75ab5a65821f652f7cd4c8afa78e68e3a6da48378aaa  height=88  log2_work=27.455713  tx=89  date=2018-04-28 17:04:49 progress=0.999740  cache=0.0MiB(88txo)
-            1525020254, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com -> 1523189345
-            781,        // was: 0, // * total number of transactions between genesis and last checkpoint
+            genesis.nTime, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com https://www.epochconverter.com/ -> 1523189345
+            0,        // was: 0, // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the "UpdateTip" debug.log lines)
             1000        // * estimated number of transactions per day after checkpoint
         };
@@ -366,7 +369,7 @@ public:
             // The best chain should have at least this much work.
             consensus.nMinimumChainWork = uint256S("0x0"); // MODMOD uint256S("0x000000000000000000000000000000000000000000000000000924e924a21715"); // 37900
 
-            genesis = CreateGenesisBlock(1524924490,1180416,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
+            genesis = CreateGenesisBlock(1525206167,1079926,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
         } else {
             std::time_t unixTimeNow = std::time(nullptr);
             consensus.nMinimumChainWork = uint256S("0x0"); // MODMOD uint256S("0x000000000000000000000000000000000000000000000000000924e924a21715"); // 37900
@@ -378,16 +381,16 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x000001ab0c0b8ab732600a6f59ac3df8af64b3ed4946bce70626ed131c1262a4")); // 0xhash
-        assert(genesis.hashMerkleRoot == uint256S("0x2e15172a784b3dd5c262dbff3e300de2162af4facc7ea669fef6dc438762b393")); // 0xhashMerkleRoot
+        assert(consensus.hashGenesisBlock == uint256S("0x0000096b17ca35b6884cd9269dbacc60b9ab5aa15995b5b8678e6b8a58ba85ca")); // 0xhash
+        assert(genesis.hashMerkleRoot == uint256S("0x32b2d01824250c881149c2bbdb12def0efdc80e3685dabd4073a51c966eed30f")); // 0xhashMerkleRoot
 
         vFixedSeeds.clear();
         vSeeds.clear();
         vSeeds.push_back(CDNSSeedData("testseed1.sanity.mn",  "testseed1.sanity.mn"));
         vSeeds.push_back(CDNSSeedData("testseed2.sanity.mn",  "testseed2.sanity.mn"));
-        //vSeeds.push_back(CDNSSeedData("testseed3.sanity.mn",  "testseed3.sanity.mn"));
-        //vSeeds.push_back(CDNSSeedData("testseed4.sanity.mn",  "testseed4.sanity.mn"));
-        //vSeeds.push_back(CDNSSeedData("testseed5.sanity.mn",  "testseed5.sanity.mn"));
+        vSeeds.push_back(CDNSSeedData("testseed3.sanity.mn",  "testseed3.sanity.mn"));
+        vSeeds.push_back(CDNSSeedData("testseed4.sanity.mn",  "testseed4.sanity.mn"));
+        vSeeds.push_back(CDNSSeedData("testseed5.sanity.mn",  "testseed5.sanity.mn"));
 
         // MODMOD Testnet addresses start with 'T'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,65);
@@ -504,7 +507,7 @@ public:
             // The best chain should have at least this much work.
             consensus.nMinimumChainWork = uint256S("0x00");
 
-            genesis = CreateGenesisBlock(1524924744,0,0x207fffff,1,1*COIN); // nTime, nNonce, nBits, ver
+            genesis = CreateGenesisBlock(1525206232,0,0x207fffff,1,1*COIN); // nTime, nNonce, nBits, ver
         } else {
           std::time_t unixTimeNow = std::time(nullptr);
           consensus.nMinimumChainWork = uint256S("0x00");
@@ -516,8 +519,8 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         // GENGEN
-        assert(consensus.hashGenesisBlock == uint256S("0x6cb04e513b1a35d58e839487bb18769409c876adb04a5c1a64f5c7f5dbad33b6")); // 0xhash
-        assert(genesis.hashMerkleRoot == uint256S("0x2e15172a784b3dd5c262dbff3e300de2162af4facc7ea669fef6dc438762b393")); // 00xhashMerkleRoot
+        assert(consensus.hashGenesisBlock == uint256S("0x04d66f13ac867cd69dbf21a1e1fc37337c22698d7604e020ce98630de385c03d")); // 0xhash
+        assert(genesis.hashMerkleRoot == uint256S("0x32b2d01824250c881149c2bbdb12def0efdc80e3685dabd4073a51c966eed30f")); // 00xhashMerkleRoot
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
