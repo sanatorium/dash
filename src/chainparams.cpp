@@ -198,11 +198,12 @@ public:
           // The best chain should have at least this much work.
           // `GET /rest/chaininfo.json` -> * chainwork : (string) total amount of work in active chain, in hexadecimal
           // "getblockheader \"hash\" ( verbose )\n" ->  \"chainwork\" : \"0000...1f3\"     (string) Expected number of hashes required to produce the current chain (in hex)\n"
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
           //////////////////////////////////////////////////
-          // sanity-cli getblock (blockhash) -> chainwork //
+          // getblockhash 1250 -> getblock (blockhash) -> chainwork hex:26a1072d4 -> dec:10369397460 -> log2(10369397460) = 33.271613014 == debug.log log2_work
+          // debug.log: 2018-05-03 16:24:04 UpdateTip: new best=0000018cc8015783cf2c79c907411a0a993c13999ad1914a14ed8ad0742b5fa8  height=1250  log2_work=33.271613  tx=1251  date=2018-05-03 16:24:04 progress=1.000000  cache=0.1MiB(531txo)
           //////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-          consensus.nMinimumChainWork = uint256S("0x0"); // was: 0x0 MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
+          consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000000026a1072d4"); // was: 0x0 MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
 
           genesis = CreateGenesisBlock(1525206118,826478,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
         } else {
@@ -264,22 +265,23 @@ public:
         // GENGEN mainnetsporkkey
         strSporkPubKey = "0471215fbac076b1c0cedc690700c800ef38928b823513d8e4de9ca001b4b6bdaa25ac0baa55519e237aaa8b660b68418a13328d297a78d3f7176a7e1d558da70b";
 
-         // GENGEN
+        // GENGEN
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
             (    0, consensus.hashGenesisBlock)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //(   88, uint256S("0x0000050a961b03446e6d75ab5a65821f652f7cd4c8afa78e68e3a6da48378aaa"))
-            // 2018-04-29 16:44:14 UpdateTip: new best=0000018b904a7cb61deeba532527ee3a736f62f4e6714db263b7e2c35777757d  height=777  log2_work=32.29496  tx=781  date=2018-04-29 16:44:14 progress=1.000000  cache=0.1MiB(690txo)
-            //(  777, uint256S("0x0000018b904a7cb61deeba532527ee3a736f62f4e6714db263b7e2c35777757d"))
+            //2018-05-02 19:52:56 UpdateTip: new best=000002d0864e20e54953e8dbca38bb0d460b3a0cd942c781037c05e5240889f0  height=666  log2_work=32.273816  tx=667  date=2018-05-02 19:52:56 progress=1.000000  cache=0.1MiB(666txo)
+            (  666, uint256S("0x000002d0864e20e54953e8dbca38bb0d460b3a0cd942c781037c05e5240889f0"))
+            //2018-05-03 11:28:22 UpdateTip: new best=0000014d113a4b6b18be7df16a480fd1afa5a365526353fd97d8da49eca9b542 height=1111  log2_work=33.090021 tx=1112 date=2018-05-03 11:28:22 (1525346902) progress=1.000000  cache=0.1MiB(392txo)
+            ( 1111, uint256S("0x0000014d113a4b6b18be7df16a480fd1afa5a365526353fd97d8da49eca9b542"))
 
             ////////////////////////////////////////////////////////
             // last block -> in debug.log -> new best=(blockhash) //
             ////////////////////////////////////////////////////////
             ,
             // debug.log: 2018-04-28 17:04:51 UpdateTip: new best=0000050a961b03446e6d75ab5a65821f652f7cd4c8afa78e68e3a6da48378aaa  height=88  log2_work=27.455713  tx=89  date=2018-04-28 17:04:49 progress=0.999740  cache=0.0MiB(88txo)
-            genesis.nTime, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com https://www.epochconverter.com/ -> 1523189345
-            0,        // was: 0, // * total number of transactions between genesis and last checkpoint
+            1525346902, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com https://www.epochconverter.com/ -> 1523189345
+            1112,       // was: 0, // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the "UpdateTip" debug.log lines)
             1000        // * estimated number of transactions per day after checkpoint
         };
