@@ -201,9 +201,10 @@ public:
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
           //////////////////////////////////////////////////
           // getblockhash 1250 -> getblock (blockhash) -> chainwork hex:26a1072d4 -> dec:10369397460 -> log2(10369397460) = 33.271613014 == debug.log log2_work
+          // getblockhash 5342 ->
           // debug.log: 2018-05-03 16:24:04 UpdateTip: new best=0000018cc8015783cf2c79c907411a0a993c13999ad1914a14ed8ad0742b5fa8  height=1250  log2_work=33.271613  tx=1251  date=2018-05-03 16:24:04 progress=1.000000  cache=0.1MiB(531txo)
           //////////////////////////////////////////////////
-          consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000000026a1072d4"); // was: 0x0 MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
+          consensus.nMinimumChainWork = uint256S("0x000000000000000000000000000000000000000000000000000000044dd329fd"); // was: 0x0 MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
 
           genesis = CreateGenesisBlock(1525206118,826478,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
         } else {
@@ -274,14 +275,16 @@ public:
             (  666, uint256S("0x000002d0864e20e54953e8dbca38bb0d460b3a0cd942c781037c05e5240889f0"))
             //2018-05-03 11:28:22 UpdateTip: new best=0000014d113a4b6b18be7df16a480fd1afa5a365526353fd97d8da49eca9b542 height=1111  log2_work=33.090021 tx=1112 date=2018-05-03 11:28:22 (1525346902) progress=1.000000  cache=0.1MiB(392txo)
             ( 1111, uint256S("0x0000014d113a4b6b18be7df16a480fd1afa5a365526353fd97d8da49eca9b542"))
+            //2018-05-09 20:01:37 UpdateTip: new best=000000bd10a0e485d196d53f256846532ee7c610664f973f571abe4457be4e93  height=5342  log2_work=34.105679  tx=5358  date=2018-05-09 20:01:34 (1525896094) progress=0.999994  cache=0.2MiB(1416txo)
+            ( 5342, uint256S("0x000000bd10a0e485d196d53f256846532ee7c610664f973f571abe4457be4e93"))
 
             ////////////////////////////////////////////////////////
             // last block -> in debug.log -> new best=(blockhash) //
             ////////////////////////////////////////////////////////
             ,
             // debug.log: 2018-04-28 17:04:51 UpdateTip: new best=0000050a961b03446e6d75ab5a65821f652f7cd4c8afa78e68e3a6da48378aaa  height=88  log2_work=27.455713  tx=89  date=2018-04-28 17:04:49 progress=0.999740  cache=0.0MiB(88txo)
-            1525346902, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com https://www.epochconverter.com/ -> 1523189345
-            1112,       // was: 0, // * total number of transactions between genesis and last checkpoint
+            1525896094, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com https://www.epochconverter.com/ -> 1523189345
+            5358,       // was: 0, // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the "UpdateTip" debug.log lines)
             1000        // * estimated number of transactions per day after checkpoint
         };

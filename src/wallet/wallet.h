@@ -46,11 +46,11 @@ static const unsigned int DEFAULT_KEYPOOL_SIZE = 1000;
 //! -paytxfee default
 static const CAmount DEFAULT_TRANSACTION_FEE = 0;
 //! -paytxfee will warn if called with a higher fee than this amount (in satoshis) per KB
-static const CAmount nHighTransactionFeeWarning = 10 * CENT; // MODMOD was: 0.01 * COIN;
+static const CAmount nHighTransactionFeeWarning = 1 * COIN; // 10 * CENT; // MODMOD was: 0.01 * COIN;
 //! -fallbackfee default
-static const CAmount DEFAULT_FALLBACK_FEE = 1 * CENT; // MODMOD was: 1000;
+static const CAmount DEFAULT_FALLBACK_FEE = 1000; // 1 * CENT; // MODMOD was: 1000;
 //! -mintxfee default
-static const CAmount DEFAULT_TRANSACTION_MINFEE = 1 * CENT; // MODMOD was: 1000;
+static const CAmount DEFAULT_TRANSACTION_MINFEE = 1000; // 1 * CENT; // MODMOD was: 1000;
 //! -maxtxfee default
 static const CAmount DEFAULT_TRANSACTION_MAXFEE = 20 * CENT; // MODMOD was: 0.2 * COIN; // "smallest denom" + X * "denom tails"
 //! minimum change amount
@@ -96,7 +96,7 @@ enum AvailableCoinsType
     ALL_COINS,
     ONLY_DENOMINATED,
     ONLY_NONDENOMINATED,
-    ONLY_55555, // find masternode outputs including locked ones (use with caution)
+    ONLY_10000, // find masternode outputs including locked ones (use with caution)
     ONLY_PRIVATESEND_COLLATERAL
 };
 

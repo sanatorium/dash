@@ -36,10 +36,10 @@ void DarksendConfig::setModel(WalletModel *model)
 
 void DarksendConfig::clickBasic()
 {
-    configure(true, 10000, 2); // MODMOD (was: 1000)
+    configure(true, 1000, 2); // MODMOD (was: 1000) default privatesend mixing amount and rounds
 
     QString strAmount(BitcoinUnits::formatWithUnit(
-        model->getOptionsModel()->getDisplayUnit(), 10000 * COIN)); // MODMOD (was: 1000)
+        model->getOptionsModel()->getDisplayUnit(), 1000 * COIN)); // MODMOD (was: 1000)
     QMessageBox::information(this, tr("PrivateSend Configuration"),
         tr(
             "PrivateSend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Sanity's configuration screen."
@@ -51,10 +51,10 @@ void DarksendConfig::clickBasic()
 
 void DarksendConfig::clickHigh()
 {
-    configure(true, 10000, 8); // MODMOD (was: 1000)
+    configure(true, 1000, 8); // MODMOD (was: 1000)
 
     QString strAmount(BitcoinUnits::formatWithUnit(
-        model->getOptionsModel()->getDisplayUnit(), 10000 * COIN)); // MODMOD (was: 1000)
+        model->getOptionsModel()->getDisplayUnit(), 1000 * COIN)); // MODMOD (was: 1000)
     QMessageBox::information(this, tr("PrivateSend Configuration"),
         tr(
             "PrivateSend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Sanity's configuration screen."
@@ -66,10 +66,10 @@ void DarksendConfig::clickHigh()
 
 void DarksendConfig::clickMax()
 {
-    configure(true, 10000, 16);  // MODMOD (was: 1000)
+    configure(true, 1000, 16);  // MODMOD (was: 1000)
 
     QString strAmount(BitcoinUnits::formatWithUnit(
-        model->getOptionsModel()->getDisplayUnit(), 10000 * COIN));  // MODMOD (was: 1000)
+        model->getOptionsModel()->getDisplayUnit(), 1000 * COIN));  // MODMOD (was: 1000)
     QMessageBox::information(this, tr("PrivateSend Configuration"),
         tr(
             "PrivateSend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Sanity's configuration screen."
