@@ -1,18 +1,21 @@
-Sanity Core version 1.12.2
-========================
+Sanity Core version 1.12.2.3
+============================
 
 Release is now available from:
 
   <https://www.sanity.mn>
+  <https://github.com/sanatorium/sanity/releases>
 
-This is a new major version release, bringing new features and other improvements.
+This is a new minor version release, bringing various bugfixes and other
+improvements.
 
 Please report bugs using the issue tracker at github:
 
   <https://github.com/sanatorium/sanity/issues>
 
-Upgrading and downgrading
-=========================
+
+Upgrading
+=========
 
 How to Upgrade
 --------------
@@ -25,10 +28,13 @@ sanityd/sanity-qt (on Linux).
 Notable changes
 ===============
 
-First release-version of Sanity
--------------------------------
+First release of Sanity Core: v1.12.2.3-80000
+---------------------------------------------
 
-1.12.2 Change log
-=================
+Fork of Dash Core v0.12.2.3 commit e596762 on 11 Jan 2018
 
-a lot...
+
+Other improvements and bug fixes
+--------------------------------
+
+This release also fixes a few crashes and compatibility issues.

@@ -350,14 +350,25 @@ Building Sanity Core
 To build Sanity Core (for Linux, OS X and Windows) just follow the steps under 'perform
 Gitian builds' in [doc/release-process.md](release-process.md#perform-gitian-builds) in the Sanity Core repository.
 
+```bash
+export USE_LXC=1
+
+cd ~/gitian-builder && ./bin/gbuild --commit sanity=master ../sanity/contrib/gitian-descriptors/gitian-linux.yml
+cp -aru ~/gitian-builder/build ~/build-linux
+
+cd ~/gitian-builder && ./bin/gbuild --commit sanity=master ../sanity/contrib/gitian-descriptors/gitian-win.yml
+cp -aru ~/gitian-builder/build ~/build-windows
+```
+
+
 This may take some time as it will build all the dependencies needed for each descriptor.
 These dependencies will be cached after a successful build to avoid rebuilding them when possible.
 
 At any time you can check the package installation and build progress with
 
 ```bash
-tail -f var/install.log
-tail -f var/build.log
+tail -f ~/gitian-builder/var/install.log
+tail -f ~/gitian-builder/var/build.log
 ```
 
 Output from `gbuild` will look something like
@@ -394,7 +405,7 @@ and inputs.
 
 For example:
 ```bash
-URL=https://github.com/crowning-/sanity.git
+URL=https://github.com/sanatorium/sanity.git
 COMMIT=b616fb8ef0d49a919b72b0388b091aaec5849b96
 ./bin/gbuild --commit sanity=${COMMIT} --url sanity=${URL} ../sanity/contrib/gitian-descriptors/gitian-linux.yml
 ./bin/gbuild --commit sanity=${COMMIT} --url sanity=${URL} ../sanity/contrib/gitian-descriptors/gitian-win.yml

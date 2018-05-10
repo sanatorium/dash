@@ -21,10 +21,8 @@ use the autogen script to prepare the build environment.
     make
 
 Precompiled binaries are available at github, see
-https://github.com/sanatorium/sanity-binaries
-
-Always verify the signatures and checksums.
+https://github.com/sanatorium/sanity/releases
 
 See doc/build-*.md for instructions on building sanityd,
 the intended-for-services, no-graphical-interface,
-reference implementation of Sanity.
+reference implementation of sanitycore.
