@@ -1252,11 +1252,7 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
         else if (nHeight > 130000) nSubsidyBase = 400;
         else if (nHeight > 110000) nSubsidyBase = 200;
         else if (nHeight >  90000) nSubsidyBase = 150;
-        else if (nHeight >  70000) nSubsidyBase = 100;
-        else if (nHeight >  50000) nSubsidyBase = 100;
-        else if (nHeight >  40000) nSubsidyBase = 100;
-        else if (nHeight >  30000) nSubsidyBase = 100;
-        else if (nHeight >  20000) nSubsidyBase = 100;   // start rewarding
+        else if (nHeight >  30000) nSubsidyBase = 100;   // start rewarding
         else if (nHeight >   1000) nSubsidyBase = 1;     // slow start for network adjustements, production tests, ANN and miner preparation
         else if (nHeight >    500) nSubsidyBase = 10001; // premine 5000500 = 500 x 10001 + luckyblockrewards
         //else if (nHeight >=     1) nSubsidyBase = 1;

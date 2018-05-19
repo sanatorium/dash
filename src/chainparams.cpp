@@ -169,7 +169,6 @@ public:
         CTxOut(nValue=1.00000000, scriptPubKey=41049b1ee46b3d3b5bb75f99a8a6d6)
 
 
-
         MineGenesisBlock for: TESTNET
         Converting genesis hash to string: CBlock(
         hash=0000096b17ca35b6884cd9269dbacc60b9ab5aa15995b5b8678e6b8a58ba85ca, ver=1,
@@ -203,8 +202,8 @@ public:
           // getblockhash 1250 -> getblock (blockhash) -> chainwork hex:26a1072d4 -> dec:10369397460 -> log2(10369397460) = 33.271613014 == debug.log log2_work
           // debug.log: 2018-05-03 16:24:04 UpdateTip: new best=0000018cc8015783cf2c79c907411a0a993c13999ad1914a14ed8ad0742b5fa8  height=1250  log2_work=33.271613  tx=1251  date=2018-05-03 16:24:04 progress=1.000000  cache=0.1MiB(531txo)
           //////////////////////////////////////////////////
-          // getblockhash 5555 -> getblock 0000041c72f7dd4406e8b74774dcc82f2c17c6a9b4aa711f01d33730ea2e870e
-          consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000000004628507f4"); // was: 0x0 MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
+          // getblockhash 12021 -> getblock 00000000481dd2bf20c3721fb867eeb213c8485e9430665d7a597927808c56a7 -> chainwork
+          consensus.nMinimumChainWork = uint256S("00000000000000000000000000000000000000000000000000000007660ac8ec"); // was: 0x0 MODMOD validation.cpp: IsInitialBlockDownload()? if (chainActive.Tip()->nChainWork < UintToArith256(chainParams.GetConsensus().nMinimumChainWork)
 
           genesis = CreateGenesisBlock(1525206118,826478,0x1e0ffff0,1,1*COIN); // nTime, nNonce, nBits, ver
         } else {
@@ -232,11 +231,16 @@ public:
         // MODMOD
         vFixedSeeds.clear();
         vSeeds.clear();
+        vSeeds.push_back(CDNSSeedData("seed0.sanity.mn", "seed0.sanity.mn"));
         vSeeds.push_back(CDNSSeedData("seed1.sanity.mn", "seed1.sanity.mn"));
-        vSeeds.push_back(CDNSSeedData("seed1.sanity.mn", "seed2.sanity.mn"));
+        vSeeds.push_back(CDNSSeedData("seed2.sanity.mn", "seed2.sanity.mn"));
         vSeeds.push_back(CDNSSeedData("seed3.sanity.mn", "seed3.sanity.mn"));
         vSeeds.push_back(CDNSSeedData("seed4.sanity.mn", "seed4.sanity.mn"));
         vSeeds.push_back(CDNSSeedData("seed5.sanity.mn", "seed5.sanity.mn"));
+        vSeeds.push_back(CDNSSeedData("seed6.sanity.mn", "seed6.sanity.mn"));
+        vSeeds.push_back(CDNSSeedData("seed7.sanity.mn", "seed7.sanity.mn"));
+        vSeeds.push_back(CDNSSeedData("seed8.sanity.mn", "seed8.sanity.mn"));
+        vSeeds.push_back(CDNSSeedData("seed9.sanity.mn", "seed9.sanity.mn"));
 
         // MODMOD addresses start with 'S'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);
@@ -277,14 +281,15 @@ public:
             ( 1111, uint256S("0x0000014d113a4b6b18be7df16a480fd1afa5a365526353fd97d8da49eca9b542"))
             //2018-05-10 03:20:29 UpdateTip: new best=0000041c72f7dd4406e8b74774dcc82f2c17c6a9b4aa711f01d33730ea2e870e  height=5555  log2_work=34.132525  tx=5571  date=2018-05-10 03:20:26 (1525922426) progress=0.999994  cache=0.3MiB(1825txo)
             ( 5555, uint256S("0x0000041c72f7dd4406e8b74774dcc82f2c17c6a9b4aa711f01d33730ea2e870e"))
+            // 2018-05-19 15:12:09 UpdateTip: new best=00000000481dd2bf20c3721fb867eeb213c8485e9430665d7a597927808c56a7  height=12021  log2_work=34.887253  tx=12100  date=2018-05-19 15:12:10 progress=1.000002  cache=0.4MiB(2325txo)
+            (12021, uint256S("0x00000000481dd2bf20c3721fb867eeb213c8485e9430665d7a597927808c56a7"))
 
             ////////////////////////////////////////////////////////
             // last block -> in debug.log -> new best=(blockhash) //
             ////////////////////////////////////////////////////////
             ,
-            // debug.log: 2018-04-28 17:04:51 UpdateTip: new best=0000050a961b03446e6d75ab5a65821f652f7cd4c8afa78e68e3a6da48378aaa  height=88  log2_work=27.455713  tx=89  date=2018-04-28 17:04:49 progress=0.999740  cache=0.0MiB(88txo)
-            1525922426, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com https://www.epochconverter.com/ -> 1523189345
-            5571,       // was: 0, // * total number of transactions between genesis and last checkpoint
+            1526742730, // was: genesis.nTime, // * UNIX timestamp of last checkpoint block -> debug.log -> date=2018-04-08 12:09:05 -> https://www.unixtimestamp.com https://www.epochconverter.com/ -> 1523189345
+            12100,      // was: 0, // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the "UpdateTip" debug.log lines)
             1000        // * estimated number of transactions per day after checkpoint
         };

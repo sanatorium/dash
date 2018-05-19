@@ -284,11 +284,11 @@ std::string CMasternode::StateToString(int nStateIn)
 {
     switch(nStateIn) {
         case MASTERNODE_PRE_ENABLED:            return "PRE_ENABLED";
-        case MASTERNODE_ENABLED:                return "ENABLED (WATCHDOG)"; // MODMOD
+        case MASTERNODE_ENABLED:                return "ENABLED"; // MODMOD
         case MASTERNODE_EXPIRED:                return "EXPIRED";
         case MASTERNODE_OUTPOINT_SPENT:         return "OUTPOINT_SPENT";
         case MASTERNODE_UPDATE_REQUIRED:        return "UPDATE_REQUIRED";
-        case MASTERNODE_WATCHDOG_EXPIRED:       return "ENABLED (NO WATCHDOG)"; // MODMOD
+        case MASTERNODE_WATCHDOG_EXPIRED:       return "ENABLED (WATCHDOG)"; // MODMOD
         case MASTERNODE_NEW_START_REQUIRED:     return "NEW_START_REQUIRED";
         case MASTERNODE_POSE_BAN:               return "POSE_BAN";
         default:                                return "UNKNOWN";
