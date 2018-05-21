@@ -1,5 +1,15 @@
 ![GitHub Logo](images/sanity_logo_horizontal.png)
 
+# tutorials
+
+[install _**Sanity Wallet**_ from tarball](Install-From-TAR-On-A-Linux-VPS.md)
+
+[install _**Sanity Masternode**_ (cold-setup) from tarball](Install-Masternode-Cold.md)
+
+[install _**Sanity Wallet**_ from source (install-script)](Script-Install-From-Source-On-A-Linux-VPS.md)
+
+[install _**Sanity Wallet**_ from source (manually)](Manual-Install-From-Source-On-A-Linux-VPS.md)
+
 # references
 
 ## homepage
@@ -19,13 +29,3 @@ https://github.com/sanatorium/sanity
 
 ## block explorer source
 https://github.com/sanatorium/explorer
-
-# tutorials
-
-[install _**Sanity Wallet**_ from tarball](Install-From-TAR-On-A-Linux-VPS)
-
-[install _**Sanity Masternode**_ (cold-setup) from tarball](Install-Masternode-Cold)
-
-[install _**Sanity Wallet**_ from source (install-script)](Script-Install-From-Source-On-A-Linux-VPS)
-
-[install _**Sanity Wallet**_ from source (manually)](Manual-Install-From-Source-On-A-Linux-VPS)
